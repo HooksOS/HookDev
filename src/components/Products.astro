@@ -4,29 +4,34 @@ import { products, domain } from '../data/site';
 <section class="band" id="products" aria-labelledby="products-h">
   <div class="shell">
     <div class="section-head">
-      <div class="point"><span class="eyebrow"><span class="idx">01 / 05</span>&nbsp;&nbsp;Products</span></div>
-      <h2 id="products-h">Five products, one hook stack.</h2>
+      <div class="point"><span class="eyebrow"><span class="idx">THE FORGE</span>&nbsp;&nbsp;05 products, live onchain</span></div>
+      <h2 id="products-h">Everything we've built.</h2>
+      <p class="sub">A full stack for hook-powered DeFi — framework, wallet, oracle, infra, and DEX. Each one shipping in production.</p>
     </div>
 
-    <div class="pindex">
+    <div class="pgrid">
       {products.map((p) => (
-        <article class="prow">
-          <div class="pnum">{p.idx}</div>
-          <div>
-            <div class="pname">
-              <span class="n">{p.name}</span>
-              <span class={`st${p.status === 'LIVE' ? ' live' : ''}`}>{p.status}</span>
-            </div>
+        <a class="pcard" href={p.url} target="_blank" rel="noopener" style={`--acc:${p.accent}`}>
+          <div class="pcard-top">
+            <span class="pnum">{p.idx}</span>
+            <span class={`st${p.status === 'LIVE' ? ' live' : ''}`}>{p.status}</span>
+          </div>
+
+          <div class="pcard-body">
+            <h3 class="pname">{p.name}</h3>
             <div class="pmeta">{p.cat} · {p.chain}</div>
+            <p class="pdesc">{p.desc}</p>
           </div>
-          <div class="pdesc">{p.desc}</div>
-          <div class="pright">
-            <div class="pmetric">{p.metric.v}<span class="lbl">{p.metric.l}</span></div>
-            <a class="plink" href={p.url} target="_blank" rel="noopener" aria-label={`${p.name} website`}>
-              {domain(p.url)} <span class="arw" aria-hidden="true">↗</span>
-            </a>
+
+          <div class="pfeats">
+            {p.feats.map((f) => <span>{f}</span>)}
           </div>
-        </article>
+
+          <div class="pcard-foot">
+            <span class="pmetric"><b>{p.metric.v}</b> {p.metric.l}</span>
+            <span class="plink">{domain(p.url)} <span class="arw" aria-hidden="true">↗</span></span>
+          </div>
+        </a>
       ))}
     </div>
   </div>

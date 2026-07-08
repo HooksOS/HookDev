@@ -1,50 +1,34 @@
 ---
-import { lifecycle } from '../data/site';
+// Hero — builder identity. "We are building web3."
 ---
 <section class="hero shell" aria-labelledby="hero-h1">
   <div class="eyebrow-row rise">
-    <span class="eyebrow">Uniswap V4 Hook Studio</span>
-    <span class="eyebrow">Est. 2023</span>
+    <span class="eyebrow"><span class="live-dot"></span> Shipping onchain</span>
+    <span class="eyebrow">0x · Uniswap V4 · AA</span>
   </div>
 
   <h1 id="hero-h1" class="rise rise-2">
-    We build the hooks that power <span class="accent">onchain markets.</span>
+    We are building <span class="accent">web3.</span>
   </h1>
 
   <p class="hero-lead rise rise-3">
-    A Web3 studio shipping five products and custom Uniswap V4 hooks — from
-    dynamic fees to fully programmable pools.
+    HookDev is a Web3 studio forging the products that power onchain markets —
+    Uniswap V4 hooks, account abstraction, oracles, and infra. Five shipped, more on the anvil.
   </p>
 
   <div class="hero-actions rise rise-3">
-    <a class="btn btn-primary" href="https://calendly.com/hookdev/30min" target="_blank" rel="noopener">
-      Book a build <span class="arw" aria-hidden="true">→</span>
+    <a class="btn btn-primary" href="#products">
+      See what we build <span class="arw" aria-hidden="true">↓</span>
     </a>
-    <a class="link-arw" href="#products">View products <span class="arw" aria-hidden="true">↓</span></a>
+    <a class="btn btn-ghost" href="https://x.com/hookdev" target="_blank" rel="noopener">
+      Follow the build <span class="arw" aria-hidden="true">→</span>
+    </a>
   </div>
 
   <div class="hero-facts rise rise-3">
-    <span><b>V4 + AA</b>Core focus</span>
-    <span><b>5 shipped</b>Products</span>
-    <span><b>12+ hooks</b>Deployed to mainnet</span>
-  </div>
-
-  <!-- signature: the hook lifecycle spine -->
-  <div class="spine" aria-hidden="true">
-    <div class="spine-label">Pool lifecycle — where a hook attaches</div>
-    <div class="spine-track">
-      <span class="spine-fill"></span>
-      <div class="spine-nodes">
-        {lifecycle.map((n) => (
-          <div class={`node${n.on ? ' on' : ''}`}>
-            <span class="dot"></span>
-            <span class="tag">{n.name}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-    <div class="spine-caption">
-      <b>●</b> HookDev captures value at beforeAddLiquidity, beforeSwap &amp; afterSwap.
-    </div>
+    <span><b>5</b>Products shipped</span>
+    <span><b>12+</b>V4 hooks on mainnet</span>
+    <span><b>$40M+</b>Volume routed</span>
+    <span><b>99.98%</b>RPC uptime</span>
   </div>
 </section>
