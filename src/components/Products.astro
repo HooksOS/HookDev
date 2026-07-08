@@ -1,0 +1,46 @@
+---
+import { products, domain } from '../data/site';
+
+const X_PATH = "M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.66l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25h6.83l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z";
+---
+<section class="section" id="products" aria-labelledby="products-h">
+  <div class="products-head">
+    <div>
+      <p class="eyebrow">Products / 01—05</p>
+      <h2 class="section-h" id="products-h">Five products, one stack.</h2>
+    </div>
+    <span class="note">the HookDev suite ↓</span>
+  </div>
+  <div class="product-grid">
+    {products.map((p) => (
+      <article class="pcard">
+        <div class="pcard-top">
+          {p.logo ? (
+            <span class="plogo plogo-img">
+              <img src={`/assets/logos/${p.logo}`} alt={`${p.name} logo`} width="46" height="46" loading="lazy" />
+            </span>
+          ) : (
+            <div class="plogo"><svg aria-hidden="true"><use href={`#${p.icon}`} /></svg></div>
+          )}
+          <span class="status-pill">{p.status}</span>
+        </div>
+        <div>
+          <div class="pname">{p.name} <span class="pidx">{p.idx}</span></div>
+          <div class="pmeta">{p.cat} · {p.chain}</div>
+        </div>
+        <div class="pdesc">{p.desc}</div>
+        <div class="chips">{p.feats.map((f) => <span class="chip">{f}</span>)}</div>
+        <div class="pmetric"><span class="metric-v">{p.metric.v}</span><span class="metric-l">{p.metric.l}</span></div>
+        <div class="pcard-links">
+          <a class="plink" href={p.url} target="_blank" rel="noopener" aria-label={`${p.name} website`}>
+            <svg class="stroke" aria-hidden="true"><use href="#ic-ext" /></svg>{domain(p.url)}
+          </a>
+          <span class="plink plink-soon" aria-label={`${p.name} on X — coming soon`}>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d={X_PATH} /></svg>
+            X <span class="soon">Soon</span>
+          </span>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>

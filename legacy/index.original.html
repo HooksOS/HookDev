@@ -272,6 +272,8 @@ h1, h2, h3 { margin: 0; }
   color: var(--acc);
 }
 .plogo svg { width: 23px; height: 23px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.plogo-img { background: transparent; border: 0; padding: 0; overflow: hidden; }
+.plogo-img img { width: 100%; height: 100%; object-fit: contain; display: block; border-radius: 11px; }
 
 .pname { display: flex; align-items: baseline; gap: 9px; font: 600 21px var(--f-display); color: #fff; }
 .pname .pidx { font: 500 11px var(--f-mono); color: var(--acc); letter-spacing: .04em; }
@@ -506,7 +508,7 @@ a.plink:hover { color: #fff; border-color: var(--acc); background: color-mix(in 
       <a href="#products">Products</a>
       <a href="#services">Services</a>
       <a href="#process">Process</a>
-      <a href="#brand">Brand</a>
+      <a href="#faq">FAQ</a>
       <a class="btn btn-primary" href="mailto:build@hookdev.xyz?subject=Start%20a%20build">Start a build →</a>
     </div>
   </nav>
@@ -590,84 +592,6 @@ a.plink:hover { color: #fff; border-color: var(--acc); background: color-mix(in 
       <div class="faq-grid" id="faq-grid"></div>
     </section>
 
-    <!-- BRAND KIT -->
-    <section class="section section-pad" id="brand" aria-labelledby="brand-h">
-      <p class="eyebrow">Brand Kit</p>
-      <h2 class="section-h" id="brand-h" style="margin-bottom:28px">The HookDev identity.</h2>
-      <div class="brand-grid">
-
-        <div class="bk-card bk-lockup">
-          <div class="bk-label">LOGO LOCKUP</div>
-          <div class="rowline">
-            <svg style="width:40px;height:40px;color:#e6e9ef" aria-hidden="true"><use href="#hookmark"/></svg>
-            <span class="bk-word">HOOK<span class="dev">DEV</span></span>
-          </div>
-          <div class="hr"></div>
-          <div class="rowline">
-            <svg style="width:32px;height:32px;color:var(--beam)" aria-hidden="true"><use href="#hookmark"/></svg>
-            <span class="bk-url">hookdev.xyz</span>
-          </div>
-        </div>
-
-        <div class="bk-card">
-          <div class="bk-label">PALETTE</div>
-          <div class="swatches" id="palette"></div>
-        </div>
-
-        <div class="bk-card bk-wide">
-          <div class="type-usage">
-            <div class="type-spec">
-              <div class="bk-label" style="margin-bottom:16px">TYPOGRAPHY</div>
-              <div class="big">Space Grotesk</div>
-              <div class="sub">DISPLAY / HEADINGS</div>
-              <div class="l1">IBM Plex Sans — body copy</div>
-              <div class="l2">IBM Plex Mono — data &amp; labels</div>
-            </div>
-            <div>
-              <div class="bk-label" style="margin-bottom:14px">MARK USAGE</div>
-              <div class="mark-tiles">
-                <div class="mark-tile mt-ink"><svg class="m" aria-hidden="true"><use href="#hookmark"/></svg></div>
-                <div class="mark-tile mt-blue"><svg class="m" aria-hidden="true"><use href="#hookmark"/></svg></div>
-                <div class="mark-tile mt-paper"><svg class="m" aria-hidden="true"><use href="#hookmark"/></svg></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="bk-card bk-wide">
-          <div class="social-head">
-            <div class="h">SOCIAL</div>
-            <div class="a">@hookdev</div>
-          </div>
-          <div class="social-cards">
-            <div class="social-card">
-              <div class="ic"><svg viewBox="0 0 24 24" width="17" height="17" fill="#fff" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.66l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25h6.83l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></div>
-              <div><div class="pn">X</div><div class="hd">@hookdev</div></div>
-            </div>
-            <div class="social-card">
-              <div class="ic"><svg viewBox="0 0 24 24" width="19" height="19" fill="#fff" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></div>
-              <div><div class="pn">Facebook</div><div class="hd">/hookdev</div></div>
-            </div>
-            <div class="social-card">
-              <div class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="#fff" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></div>
-              <div><div class="pn">YouTube</div><div class="hd">@hookdev</div></div>
-            </div>
-          </div>
-          <div class="banner">
-            <div class="banner-top">
-              <span class="w">HOOK<span class="dev">DEV</span></span>
-              <span class="t">UNISWAP V4 HOOK STUDIO</span>
-            </div>
-            <div class="banner-bot">
-              <div class="avatar"><svg class="m" aria-hidden="true"><use href="#hookmark"/></svg></div>
-              <div><div class="nm">HookDev</div><div class="hd">@hookdev · hookdev.xyz</div></div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
     <!-- CTA -->
     <section class="cta section" aria-labelledby="cta-h">
       <h2 id="cta-h">Let's build your hook.</h2>
@@ -704,11 +628,11 @@ a.plink:hover { color: #fff; border-color: var(--acc); background: color-mix(in 
    ============================================================ */
 const DATA = {
   products: [
-    { idx: "01", name: "HookOS", cat: "FRAMEWORK", chain: "EVM", status: "LIVE", icon: "ic-os", accent: "#3B82F6", url: "https://hookos.fun/", desc: "Modular runtime for building, simulating, and shipping Uniswap V4 hooks.", metric: { v: "120+", l: "Hooks scaffolded" }, feats: ["CLI + SDK", "Fork simulation", "Hook templates"] },
-    { idx: "02", name: "HookOS Wallet", cat: "WALLET", chain: "Base · Arbitrum", status: "LIVE", icon: "ic-wallet", accent: "#22C55E", url: "https://hookoswallet.xyz/", desc: "Account-abstraction wallet purpose-built for hook-powered DeFi.", metric: { v: "4337", l: "Smart accounts" }, feats: ["Passkeys", "Batched swaps", "Gas sponsorship"] },
-    { idx: "03", name: "OV2", cat: "ORACLE", chain: "Cross-chain", status: "BETA", icon: "ic-oracle", accent: "#A855F7", url: "https://ov2.fun/", desc: "Manipulation-resistant, low-latency price oracle feeding hooks on-chain.", metric: { v: "<1 blk", l: "Update latency" }, feats: ["TWAP + spot", "Manipulation guard", "Push + pull"] },
-    { idx: "04", name: "HookRPC", cat: "INFRA", chain: "Multi-chain", status: "LIVE", icon: "ic-rpc", accent: "#38BDF8", url: "https://hookrpc.xyz/", desc: "High-availability RPC and indexing tuned for hook-heavy workloads.", metric: { v: "99.98%", l: "Uptime" }, feats: ["Archive nodes", "Hook indexing", "WebSocket"] },
-    { idx: "05", name: "HookSwap", cat: "DEX", chain: "Unichain", status: "BETA", icon: "ic-swap", accent: "#F59E0B", url: "https://hookswap.org/", desc: "A DEX where every pool is programmable through hooks.", metric: { v: "$40M+", l: "Routed volume" }, feats: ["Hook pools", "MEV-aware", "Limit orders"] },
+    { idx: "01", name: "HookOS", cat: "FRAMEWORK", chain: "EVM", status: "LIVE", icon: "ic-os", accent: "#4ADE80", logo: "hookos.svg", url: "https://hookos.fun/", desc: "Modular runtime for building, simulating, and shipping Uniswap V4 hooks.", metric: { v: "120+", l: "Hooks scaffolded" }, feats: ["CLI + SDK", "Fork simulation", "Hook templates"] },
+    { idx: "02", name: "HookOS Wallet", cat: "WALLET", chain: "Base · Arbitrum", status: "LIVE", icon: "ic-wallet", accent: "#22C55E", logo: "hookoswallet.svg", url: "https://hookoswallet.xyz/", desc: "Account-abstraction wallet purpose-built for hook-powered DeFi.", metric: { v: "4337", l: "Smart accounts" }, feats: ["Passkeys", "Batched swaps", "Gas sponsorship"] },
+    { idx: "03", name: "OV2", cat: "ORACLE", chain: "Cross-chain", status: "BETA", icon: "ic-oracle", accent: "#A855F7", logo: null, url: "https://ov2.fun/", desc: "Manipulation-resistant, low-latency price oracle feeding hooks on-chain.", metric: { v: "<1 blk", l: "Update latency" }, feats: ["TWAP + spot", "Manipulation guard", "Push + pull"] },
+    { idx: "04", name: "HookRPC", cat: "INFRA", chain: "Multi-chain", status: "LIVE", icon: "ic-rpc", accent: "#38BDF8", logo: null, url: "https://hookrpc.xyz/", desc: "High-availability RPC and indexing tuned for hook-heavy workloads.", metric: { v: "99.98%", l: "Uptime" }, feats: ["Archive nodes", "Hook indexing", "WebSocket"] },
+    { idx: "05", name: "HookSwap", cat: "DEX", chain: "Unichain", status: "BETA", icon: "ic-swap", accent: "#2FE07E", logo: "hookswap.png", url: "https://hookswap.org/", desc: "A DEX where every pool is programmable through hooks.", metric: { v: "$40M+", l: "Routed volume" }, feats: ["Hook pools", "MEV-aware", "Limit orders"] },
   ],
   capabilities: [
     { name: "Dynamic Fees", desc: "Fees that respond to volatility, volume, or time of day." },
@@ -741,14 +665,6 @@ const DATA = {
     { q: "Which chains do you deploy to?", a: "Any EVM chain running Uniswap V4 — including Base, Arbitrum, and Unichain." },
     { q: "Can we license the products standalone?", a: "Yes. HookOS, OV2, and HookRPC are available on their own or bundled with a build engagement." },
   ],
-  palette: [
-    { name: "Ink", hex: "#0A0E14" },
-    { name: "Slate", hex: "#141B2D" },
-    { name: "Signal", hex: "#1E40AF" },
-    { name: "Beam", hex: "#3B82F6" },
-    { name: "Fog", hex: "#8B94A6" },
-    { name: "Paper", hex: "#F6F7F9" },
-  ],
 };
 
 const el = (tag, cls, html) => {
@@ -770,9 +686,12 @@ DATA.products.forEach(p => {
 const X_PATH = "M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.66l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25h6.83l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z";
 const domain = u => u.replace(/^https?:\/\//, "").replace(/\/$/, "");
 DATA.products.forEach(p => {
+  const logo = p.logo
+    ? `<span class="plogo plogo-img"><img src="assets/logos/${esc(p.logo)}" alt="${esc(p.name)} logo" width="46" height="46" loading="lazy"></span>`
+    : `<div class="plogo"><svg aria-hidden="true"><use href="#${esc(p.icon)}"/></svg></div>`;
   document.getElementById("product-rows").appendChild(el("article", "pcard", `
     <div class="pcard-top">
-      <div class="plogo"><svg aria-hidden="true"><use href="#${esc(p.icon)}"/></svg></div>
+      ${logo}
       <span class="status-pill">${esc(p.status)}</span>
     </div>
     <div>
@@ -829,12 +748,6 @@ DATA.stack.forEach(t => {
 DATA.faqs.forEach(f => {
   document.getElementById("faq-grid").appendChild(el("div", "faq",
     `<div class="q">${esc(f.q)}</div><div class="a">${esc(f.a)}</div>`));
-});
-
-// palette
-DATA.palette.forEach(c => {
-  document.getElementById("palette").appendChild(el("div", "swatch",
-    `<div class="chipbox" style="background:${esc(c.hex)}"></div><div class="nm">${esc(c.name)}</div><div class="hx">${esc(c.hex)}</div>`));
 });
 </script>
 </body>

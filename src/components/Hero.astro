@@ -1,0 +1,36 @@
+---
+import { products } from '../data/site';
+---
+<section class="hero section" aria-labelledby="hero-h1">
+  <div class="hero-left">
+    <p class="hero-eyebrow">// UNISWAP V4 HOOK STUDIO</p>
+    <h1 class="hero-h1" id="hero-h1">We build the hooks that power onchain markets.</h1>
+    <p class="hero-p">HookDev is a Web3 development studio shipping five products and custom Uniswap V4 hooks — from dynamic fees to fully programmable pools.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="mailto:build@hookdev.xyz?subject=Book%20a%20hook%20build">Book a hook build</a>
+      <a class="btn btn-ghost" href="#products">View products</a>
+    </div>
+    <div class="hero-facts">
+      <div><div class="v">EST. 2023</div>ONCHAIN STUDIO</div>
+      <div><div class="v">V4 + AA</div>CORE FOCUS</div>
+      <div><div class="v">5 SHIPPED</div>PRODUCTS</div>
+    </div>
+  </div>
+  <aside class="hero-right" aria-label="System status board">
+    <div class="status-head"><span>SYSTEM // STATUS</span><span class="online">● ALL ONLINE</span></div>
+    <div class="status-list">
+      {products.map((p) => (
+        <div class="status-row">
+          <span class="name">{p.name}</span>
+          <span class="cat"><span>{p.cat}</span><span class="dot"></span></span>
+        </div>
+      ))}
+    </div>
+    <div class="metrics">
+      <div><div class="lbl">HOOKS SHIPPED</div><div class="big">12+</div></div>
+      <div><div class="lbl">RPC UPTIME</div><div class="big beam">99.98%</div></div>
+      <div><div class="lbl">PRODUCTS</div><div class="big">05</div></div>
+      <div><div class="lbl">STATUS</div><div class="big pos">SHIPPING</div></div>
+    </div>
+  </aside>
+</section>

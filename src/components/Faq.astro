@@ -1,0 +1,15 @@
+---
+import { faqs } from '../data/site';
+---
+<section class="section section-pad" id="faq" aria-labelledby="faq-h">
+  <p class="eyebrow">FAQ</p>
+  <h2 class="section-h" id="faq-h" style="margin-bottom:26px">Common questions.</h2>
+  <div class="faq-grid">
+    {faqs.map((f) => (
+      <div class="faq">
+        <div class="q">{f.q}</div>
+        <div class="a">{f.a}</div>
+      </div>
+    ))}
+  </div>
+</section>

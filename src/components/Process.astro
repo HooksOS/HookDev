@@ -1,0 +1,16 @@
+---
+import { process } from '../data/site';
+---
+<section class="section section-pad" id="process" aria-labelledby="proc-h">
+  <p class="eyebrow">Process</p>
+  <h2 class="section-h" id="proc-h" style="margin-bottom:28px">Spec to mainnet.</h2>
+  <div class="process">
+    {process.map((s) => (
+      <div class="process-step">
+        <div class="n">{s.n}</div>
+        <div class="t">{s.title}</div>
+        <div class="d">{s.desc}</div>
+      </div>
+    ))}
+  </div>
+</section>

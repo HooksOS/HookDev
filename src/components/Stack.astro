@@ -1,0 +1,9 @@
+---
+import { stack } from '../data/site';
+---
+<section class="section section-pad" aria-labelledby="stack-h">
+  <p class="eyebrow" id="stack-h" style="margin-bottom:18px">Stack</p>
+  <div class="stack-chips">
+    {stack.map((t) => <span class="stack-chip">{t}</span>)}
+  </div>
+</section>

@@ -25,5 +25,15 @@ TestResults.xml
 ### Local verification artifacts ###
 .playwright-mcp/
 *-full.png
+full-final.png
 products-redesign*.png
 products-mobile.png
+products-logos.png
+
+### Node / Astro ###
+node_modules/
+dist/
+.astro/
+.env
+.env.production
+npm-debug.log*

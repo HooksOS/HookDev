@@ -1,0 +1,15 @@
+---
+import { capabilities } from '../data/site';
+---
+<section class="section section-pad" id="capabilities" aria-labelledby="cap-h">
+  <p class="eyebrow">Capabilities</p>
+  <h2 class="section-h" id="cap-h" style="margin-bottom:26px">Hooks we build.</h2>
+  <div class="grid-3">
+    {capabilities.map((c) => (
+      <div class="cell">
+        <div class="h">{c.name}</div>
+        <div class="d">{c.desc}</div>
+      </div>
+    ))}
+  </div>
+</section>
