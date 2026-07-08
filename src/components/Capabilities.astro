@@ -1,15 +1,24 @@
 ---
 import { capabilities } from '../data/site';
 ---
-<section class="section section-pad" id="capabilities" aria-labelledby="cap-h">
-  <p class="eyebrow">Capabilities</p>
-  <h2 class="section-h" id="cap-h" style="margin-bottom:26px">Hooks we build.</h2>
-  <div class="grid-3">
-    {capabilities.map((c) => (
-      <div class="cell">
-        <div class="h">{c.name}</div>
-        <div class="d">{c.desc}</div>
-      </div>
-    ))}
+<section class="band" id="capabilities" aria-labelledby="cap-h">
+  <div class="shell">
+    <div class="section-head">
+      <div class="point"><span class="eyebrow">Capabilities</span></div>
+      <h2 id="cap-h">Hooks we build.</h2>
+      <p class="sub">Each capability attaches at a specific point in the pool lifecycle — the callback is the contract's entry point.</p>
+    </div>
+
+    <div class="cap-grid">
+      {capabilities.map((c) => (
+        <div class="cap">
+          <div class="hook">{c.hook}()</div>
+          <div class="body">
+            <div class="h">{c.name}</div>
+            <div class="d">{c.desc}</div>
+          </div>
+        </div>
+      ))}
+    </div>
   </div>
 </section>

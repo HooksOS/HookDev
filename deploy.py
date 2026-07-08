@@ -126,18 +126,28 @@ def deploy_files(c, tgz):
     run(c, f"rm -f {REMOTE_TMP}", check=False)
 
 
+def _conf_exists(c):
+    rc, _, _ = run(c, f"test -f /etc/nginx/sites-available/{DOMAIN}.conf", check=False)
+    return rc == 0
+
+
 def deploy_nginx(c):
     print("\n=== nginx server block ===")
-    conf_hex = NGINX_CONF.encode().hex()
-    run(c, f"echo {conf_hex} | xxd -r -p | "
-           f"sudo tee /etc/nginx/sites-available/{DOMAIN}.conf > /dev/null")
-    run(c, f"sudo ln -sfn /etc/nginx/sites-available/{DOMAIN}.conf "
-           f"/etc/nginx/sites-enabled/{DOMAIN}.conf")
+    # Idempotent + SSL-safe: if the conf already exists it is certbot-managed
+    # (has the 443 block + redirect). Overwriting it with the HTTP-only template
+    # would take HTTPS down, so we leave it and only sync files + reload.
+    if _conf_exists(c):
+        print("conf already present — leaving certbot-managed config intact.")
+    else:
+        conf_hex = NGINX_CONF.encode().hex()
+        run(c, f"echo {conf_hex} | xxd -r -p | "
+               f"sudo tee /etc/nginx/sites-available/{DOMAIN}.conf > /dev/null")
+        run(c, f"sudo ln -sfn /etc/nginx/sites-available/{DOMAIN}.conf "
+               f"/etc/nginx/sites-enabled/{DOMAIN}.conf")
     rc, _, _ = run(c, "sudo nginx -t", check=False)
     if rc != 0:
-        run(c, f"sudo rm -f /etc/nginx/sites-enabled/{DOMAIN}.conf", check=False)
         c.close()
-        sys.exit("!! nginx config invalid — rolled back, not reloaded.")
+        sys.exit("!! nginx config invalid — not reloading.")
     run(c, "sudo systemctl reload nginx")
     run(c, f"sleep 1; curl -s -o /dev/null -w 'local serve: HTTP %{{http_code}}\\n' "
            f"-H 'Host: {DOMAIN}' http://127.0.0.1/", check=False)
@@ -145,14 +155,26 @@ def deploy_nginx(c):
 
 def deploy_ssl(c):
     print("\n=== certbot (SSL) ===")
-    _, ip, _ = run(c, f"dig +short A {DOMAIN} @1.1.1.1", check=False)
-    if ip.strip() != HOST:
-        print(f"!! {DOMAIN} resolves to '{ip.strip() or '(none)'}', not {HOST}.")
-        print("   Add DNS A records:  @ -> 15.204.8.186  and  www -> 15.204.8.186")
-        print("   Then run:  python deploy.py --ssl-only")
+    # Skip if a cert is already issued — the certbot systemd timer renews it.
+    rc, _, _ = run(c, f"sudo test -d /etc/letsencrypt/live/{DOMAIN}", check=False)
+    if rc == 0:
+        print("cert already installed — auto-renewal handled by certbot timer. Skipping.")
+        run(c, f"curl -s -o /dev/null -w 'https: HTTP %{{http_code}}\\n' https://{DOMAIN}/",
+            check=False)
         return
-    run(c, f"sudo certbot --nginx -d {DOMAIN} -d www.{DOMAIN} --non-interactive "
-           f"--agree-tos -m {EMAIL} --redirect", check=False)
+    # First issuance: only request the names that actually resolve to this host.
+    domains = []
+    for d in (DOMAIN, f"www.{DOMAIN}"):
+        _, ip, _ = run(c, f"dig +short A {d} @1.1.1.1", check=False)
+        if ip.strip() == HOST:
+            domains.append(d)
+    if not domains:
+        print(f"!! {DOMAIN} does not resolve to {HOST} yet.")
+        print("   Add an A record @ -> 15.204.8.186, then: python deploy.py --ssl-only")
+        return
+    flags = " ".join(f"-d {d}" for d in domains)
+    run(c, f"sudo certbot --nginx {flags} --non-interactive --agree-tos "
+           f"-m {EMAIL} --redirect", check=False)
     run(c, f"curl -s -o /dev/null -w 'https: HTTP %{{http_code}}\\n' https://{DOMAIN}/",
         check=False)
 

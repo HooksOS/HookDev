@@ -20,6 +20,7 @@ export interface Product {
 }
 
 export interface Capability {
+  hook: string;
   name: string;
   desc: string;
 }
@@ -56,12 +57,12 @@ export const products: Product[] = [
 ];
 
 export const capabilities: Capability[] = [
-  { name: "Dynamic Fees", desc: "Fees that respond to volatility, volume, or time of day." },
-  { name: "LVR / MEV Mitigation", desc: "Capture or neutralize loss-versus-rebalancing at the pool." },
-  { name: "On-chain Limit Orders", desc: "Resting orders executed directly inside the pool." },
-  { name: "TWAMM", desc: "Time-weighted market makers for large orders, split over time." },
-  { name: "Custom Oracles", desc: "Pool-native price feeds with manipulation guards." },
-  { name: "Gated & KYC Pools", desc: "Permissioned liquidity with on-chain compliance rules." },
+  { hook: "beforeSwap", name: "Dynamic Fees", desc: "Fees that respond to volatility, volume, or time of day." },
+  { hook: "beforeSwap", name: "LVR / MEV Mitigation", desc: "Capture or neutralize loss-versus-rebalancing at the pool." },
+  { hook: "afterSwap", name: "On-chain Limit Orders", desc: "Resting orders executed directly inside the pool." },
+  { hook: "beforeSwap", name: "TWAMM", desc: "Time-weighted market makers for large orders, split over time." },
+  { hook: "afterSwap", name: "Custom Oracles", desc: "Pool-native price feeds with manipulation guards." },
+  { hook: "beforeAddLiquidity", name: "Gated & KYC Pools", desc: "Permissioned liquidity with on-chain compliance rules." },
 ];
 
 export const services: Service[] = [
@@ -92,6 +93,16 @@ export const faqs: Faq[] = [
   { q: "Do you audit the hooks you build?", a: "We deliver audit-ready code with full test coverage and coordinate third-party audits; we don't self-certify security." },
   { q: "Which chains do you deploy to?", a: "Any EVM chain running Uniswap V4 — including Base, Arbitrum, and Unichain." },
   { q: "Can we license the products standalone?", a: "Yes. HookOS, OV2, and HookRPC are available on their own or bundled with a build engagement." },
+];
+
+// hero signature: the real Uniswap V4 hook lifecycle callbacks.
+// `on` marks the attachment points where HookDev most often captures value.
+export const lifecycle: { name: string; on: boolean }[] = [
+  { name: "beforeInitialize", on: false },
+  { name: "beforeAddLiquidity", on: true },
+  { name: "beforeSwap", on: true },
+  { name: "afterSwap", on: true },
+  { name: "afterDonate", on: false },
 ];
 
 // helper shared by the product card component

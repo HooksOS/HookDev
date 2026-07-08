@@ -1,11 +1,15 @@
 ---
 import { stats } from '../data/site';
 ---
-<section class="stats section" aria-label="Key stats">
-  {stats.map((st) => (
-    <div class="stat">
-      <div class="v">{st.v}</div>
-      <div class="l">{st.l}</div>
+<section class="band" aria-label="Key stats">
+  <div class="shell">
+    <div class="stats">
+      {stats.map((st) => (
+        <div class="stat">
+          <div class="v">{st.v}</div>
+          <div class="l">{st.l}</div>
+        </div>
+      ))}
     </div>
-  ))}
+  </div>
 </section>

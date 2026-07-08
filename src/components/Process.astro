@@ -1,16 +1,21 @@
 ---
 import { process } from '../data/site';
 ---
-<section class="section section-pad" id="process" aria-labelledby="proc-h">
-  <p class="eyebrow">Process</p>
-  <h2 class="section-h" id="proc-h" style="margin-bottom:28px">Spec to mainnet.</h2>
-  <div class="process">
-    {process.map((s) => (
-      <div class="process-step">
-        <div class="n">{s.n}</div>
-        <div class="t">{s.title}</div>
-        <div class="d">{s.desc}</div>
-      </div>
-    ))}
+<section class="band" id="process" aria-labelledby="proc-h">
+  <div class="shell">
+    <div class="section-head">
+      <div class="point"><span class="eyebrow">Process</span></div>
+      <h2 id="proc-h">Spec to mainnet.</h2>
+    </div>
+
+    <div class="proc">
+      {process.map((s) => (
+        <div class="step">
+          <div class="n">{s.n}</div>
+          <div class="t">{s.title}</div>
+          <div class="d">{s.desc}</div>
+        </div>
+      ))}
+    </div>
   </div>
 </section>

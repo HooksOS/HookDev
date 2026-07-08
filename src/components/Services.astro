@@ -1,17 +1,22 @@
 ---
 import { services } from '../data/site';
 ---
-<section class="section section-pad" id="services" aria-labelledby="svc-h">
-  <p class="eyebrow">Services</p>
-  <h2 class="section-h" id="svc-h" style="margin-bottom:28px">Work with the studio.</h2>
-  <div class="grid-2">
-    {services.map((s) => (
-      <article class="service-card">
-        <div class="k">{s.k}</div>
-        <h3>{s.name}</h3>
-        <p>{s.desc}</p>
-        <div class="service-items">{s.items.map((i) => <span class="chip">{i}</span>)}</div>
-      </article>
-    ))}
+<section class="band" id="services" aria-labelledby="svc-h">
+  <div class="shell">
+    <div class="section-head">
+      <div class="point"><span class="eyebrow">Services</span></div>
+      <h2 id="svc-h">Work with the studio.</h2>
+    </div>
+
+    <div class="svc-grid">
+      {services.map((s) => (
+        <article class="svc">
+          <div class="k">{s.k}</div>
+          <h3>{s.name}</h3>
+          <p>{s.desc}</p>
+          <div class="items">{s.items.map((i) => <span>{i}</span>)}</div>
+        </article>
+      ))}
+    </div>
   </div>
 </section>

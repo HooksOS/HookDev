@@ -1,7 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
 import HookSymbols from '../components/HookSymbols.astro';
-import Ticker from '../components/Ticker.astro';
 import Nav from '../components/Nav.astro';
 import Hero from '../components/Hero.astro';
 import Products from '../components/Products.astro';
@@ -18,23 +17,19 @@ import Footer from '../components/Footer.astro';
   <a class="skip" href="#products">Skip to content</a>
 
   <HookSymbols />
+  <Nav />
 
-  <div class="wrap">
-    <Ticker />
-    <Nav />
+  <main id="top">
+    <Hero />
+    <Products />
+    <Capabilities />
+    <Services />
+    <Process />
+    <Stats />
+    <Stack />
+    <Faq />
+    <Cta />
+  </main>
 
-    <main id="top">
-      <Hero />
-      <Products />
-      <Capabilities />
-      <Services />
-      <Process />
-      <Stats />
-      <Stack />
-      <Faq />
-      <Cta />
-    </main>
-
-    <Footer />
-  </div>
+  <Footer />
 </Base>

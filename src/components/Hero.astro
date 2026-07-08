@@ -1,36 +1,50 @@
 ---
-import { products } from '../data/site';
+import { lifecycle } from '../data/site';
 ---
-<section class="hero section" aria-labelledby="hero-h1">
-  <div class="hero-left">
-    <p class="hero-eyebrow">// UNISWAP V4 HOOK STUDIO</p>
-    <h1 class="hero-h1" id="hero-h1">We build the hooks that power onchain markets.</h1>
-    <p class="hero-p">HookDev is a Web3 development studio shipping five products and custom Uniswap V4 hooks — from dynamic fees to fully programmable pools.</p>
-    <div class="hero-actions">
-      <a class="btn btn-primary" href="mailto:build@hookdev.xyz?subject=Book%20a%20hook%20build">Book a hook build</a>
-      <a class="btn btn-ghost" href="#products">View products</a>
+<section class="hero shell" aria-labelledby="hero-h1">
+  <div class="eyebrow-row rise">
+    <span class="eyebrow">Uniswap V4 Hook Studio</span>
+    <span class="eyebrow">Est. 2023</span>
+  </div>
+
+  <h1 id="hero-h1" class="rise rise-2">
+    We build the hooks that power <span class="accent">onchain markets.</span>
+  </h1>
+
+  <p class="hero-lead rise rise-3">
+    A Web3 studio shipping five products and custom Uniswap V4 hooks — from
+    dynamic fees to fully programmable pools.
+  </p>
+
+  <div class="hero-actions rise rise-3">
+    <a class="btn btn-primary" href="mailto:build@hookdev.xyz?subject=Book%20a%20hook%20build">
+      Book a build <span class="arw" aria-hidden="true">→</span>
+    </a>
+    <a class="link-arw" href="#products">View products <span class="arw" aria-hidden="true">↓</span></a>
+  </div>
+
+  <div class="hero-facts rise rise-3">
+    <span><b>V4 + AA</b>Core focus</span>
+    <span><b>5 shipped</b>Products</span>
+    <span><b>12+ hooks</b>Deployed to mainnet</span>
+  </div>
+
+  <!-- signature: the hook lifecycle spine -->
+  <div class="spine" aria-hidden="true">
+    <div class="spine-label">Pool lifecycle — where a hook attaches</div>
+    <div class="spine-track">
+      <span class="spine-fill"></span>
+      <div class="spine-nodes">
+        {lifecycle.map((n) => (
+          <div class={`node${n.on ? ' on' : ''}`}>
+            <span class="dot"></span>
+            <span class="tag">{n.name}</span>
+          </div>
+        ))}
+      </div>
     </div>
-    <div class="hero-facts">
-      <div><div class="v">EST. 2023</div>ONCHAIN STUDIO</div>
-      <div><div class="v">V4 + AA</div>CORE FOCUS</div>
-      <div><div class="v">5 SHIPPED</div>PRODUCTS</div>
+    <div class="spine-caption">
+      <b>●</b> HookDev captures value at beforeAddLiquidity, beforeSwap &amp; afterSwap.
     </div>
   </div>
-  <aside class="hero-right" aria-label="System status board">
-    <div class="status-head"><span>SYSTEM // STATUS</span><span class="online">● ALL ONLINE</span></div>
-    <div class="status-list">
-      {products.map((p) => (
-        <div class="status-row">
-          <span class="name">{p.name}</span>
-          <span class="cat"><span>{p.cat}</span><span class="dot"></span></span>
-        </div>
-      ))}
-    </div>
-    <div class="metrics">
-      <div><div class="lbl">HOOKS SHIPPED</div><div class="big">12+</div></div>
-      <div><div class="lbl">RPC UPTIME</div><div class="big beam">99.98%</div></div>
-      <div><div class="lbl">PRODUCTS</div><div class="big">05</div></div>
-      <div><div class="lbl">STATUS</div><div class="big pos">SHIPPING</div></div>
-    </div>
-  </aside>
 </section>
