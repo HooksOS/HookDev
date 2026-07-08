@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HookDev — Uniswap V4 Hook Studio</title>
+<meta name="description" content="HookDev is a Web3 development studio shipping five products and custom Uniswap V4 hooks — from dynamic fees to fully programmable pools.">
+<meta name="theme-color" content="#0A0E14">
+<link rel="canonical" href="https://hookdev.xyz/">
+
+<!-- Open Graph / social -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hookdev.xyz/">
+<meta property="og:title" content="HookDev — Uniswap V4 Hook Studio">
+<meta property="og:description" content="We build the hooks that power onchain markets.">
+<meta property="og:image" content="design_handoff_hookdev/social-assets/hookdev-x-header-1500x500.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@hookdev">
+
+<link rel="icon" href="design_handoff_hookdev/social-assets/hookdev-avatar-ink-400.png">
+<link rel="apple-touch-icon" href="design_handoff_hookdev/social-assets/hookdev-avatar-ink-400.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   HookDev — Direction 1a (Terminal). Theme-tokenized so the
+   light "Signal" direction (1b) can be layered later by
+   overriding these custom properties on a [data-theme] scope.
+   ============================================================ */
+:root {
+  /* palette */
+  --ink:        #0A0E14;
+  --slate:      #141B2D;
+  --panel:      #0F1420;
+  --ticker:     #0B1120;
+  --signal:     #1E40AF;
+  --beam:       #3B82F6;
+  --beam-hover: #60A5FA;
+  --fog:        #8B94A6;
+  --fog-dim:    #6B7688;
+  --text:       #DFE4EC;
+  --positive:   #22C55E;
+  --hairline:   rgba(255,255,255,.08);
+  --hairline-2: rgba(255,255,255,.1);
+  --hairline-3: rgba(255,255,255,.16);
+
+  /* semantic surfaces */
+  --bg:          var(--ink);
+  --surface:     var(--panel);
+  --surface-alt: var(--ticker);
+
+  /* type */
+  --f-display: 'Space Grotesk', system-ui, sans-serif;
+  --f-body:    'IBM Plex Sans', system-ui, sans-serif;
+  --f-mono:    'IBM Plex Mono', ui-monospace, monospace;
+
+  /* shape */
+  --r-card: 12px;
+  --r-btn:  8px;
+  --r-pill: 20px;
+  --pad-x:  clamp(20px, 5vw, 40px);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--f-body);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a { color: var(--beam); text-decoration: none; }
+a:hover { color: var(--beam-hover); }
+img { max-width: 100%; display: block; }
+h1, h2, h3 { margin: 0; }
+
+:focus-visible {
+  outline: 2px solid var(--beam);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.wrap { max-width: 1200px; margin: 0 auto; }
+
+.mono { font-family: var(--f-mono); }
+.eyebrow {
+  font: 500 12px var(--f-mono);
+  color: var(--beam);
+  letter-spacing: .16em;
+  margin: 0 0 12px;
+  text-transform: uppercase;
+}
+.section-h {
+  font: 600 clamp(26px, 4vw, 34px)/1.05 var(--f-display);
+  color: #fff;
+  letter-spacing: -.02em;
+}
+
+/* dividers between terminal sections */
+.section { border-bottom: 1px solid var(--hairline); }
+.section-pad { padding: 40px var(--pad-x); }
+
+/* ---------- buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font: 600 14px var(--f-body);
+  border-radius: var(--r-btn);
+  padding: 14px 24px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color .15s ease, border-color .15s ease, transform .15s ease;
+}
+.btn-primary { background: var(--signal); color: #fff; }
+.btn-primary:hover { background: #2547c9; color: #fff; transform: translateY(-1px); }
+.btn-ghost { background: transparent; color: var(--text); border-color: var(--hairline-3); }
+.btn-ghost:hover { color: #fff; border-color: rgba(255,255,255,.32); background: rgba(255,255,255,.03); }
+
+/* ---------- ticker ---------- */
+.ticker {
+  display: flex; align-items: center; gap: 26px;
+  height: 34px; padding: 0 20px;
+  background: var(--surface-alt);
+  border-bottom: 1px solid var(--hairline);
+  font: 500 11px var(--f-mono);
+  color: var(--fog-dim);
+  overflow: hidden; white-space: nowrap;
+}
+.ticker .live { color: var(--beam); }
+.ticker .tag  { color: var(--fog); letter-spacing: .14em; }
+.ticker .feed { margin-left: auto; display: flex; gap: 22px; }
+.up { color: var(--positive); }
+@media (max-width: 720px) { .ticker .feed { display: none; } }
+
+/* ---------- nav ---------- */
+.nav {
+  position: sticky; top: 0; z-index: 50;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px var(--pad-x);
+  background: rgba(10,14,20,.82);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--hairline);
+}
+.brand { display: flex; align-items: center; gap: 11px; }
+.brand .mark { width: 30px; height: 30px; color: #e6e9ef; }
+.wordmark {
+  font: 700 19px var(--f-display);
+  letter-spacing: .02em; color: #fff;
+}
+.wordmark .dev { color: var(--beam); }
+.nav-links {
+  display: flex; align-items: center; gap: 28px;
+  font: 500 12.5px var(--f-mono); color: var(--fog);
+}
+.nav-links a { color: var(--fog); }
+.nav-links a:hover { color: #fff; }
+.nav-toggle { display: none; }
+@media (max-width: 860px) {
+  .nav-links a:not(.btn) { display: none; }
+}
+
+/* ---------- hero ---------- */
+.hero { display: grid; grid-template-columns: 1.35fr 1fr; }
+.hero-left {
+  padding: clamp(36px, 5vw, 56px) var(--pad-x) 48px;
+  border-right: 1px solid var(--hairline);
+}
+.hero-eyebrow { font: 500 12px var(--f-mono); color: var(--beam); letter-spacing: .16em; margin-bottom: 22px; }
+.hero-h1 {
+  font: 600 clamp(38px, 6.5vw, 60px)/1.02 var(--f-display);
+  letter-spacing: -.02em; color: #fff; text-wrap: balance;
+}
+.hero-p {
+  font: 400 17px/1.6 var(--f-body);
+  color: var(--fog); max-width: 520px; margin: 24px 0 32px;
+}
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.hero-facts {
+  display: flex; flex-wrap: wrap; gap: 40px; margin-top: 44px; padding-top: 26px;
+  border-top: 1px solid var(--hairline);
+  font: 500 12px var(--f-mono); color: var(--fog-dim);
+}
+.hero-facts .v { color: var(--text); font-size: 14px; margin-bottom: 4px; }
+
+.hero-right {
+  padding: 32px 36px; display: flex; flex-direction: column;
+  background: radial-gradient(120% 90% at 70% 0%, rgba(30,64,175,.22), transparent 60%);
+}
+.status-head {
+  display: flex; justify-content: space-between;
+  font: 500 11px var(--f-mono); color: var(--fog-dim); margin-bottom: 14px;
+}
+.status-head .online { color: var(--positive); }
+.status-list {
+  flex: 1; display: flex; flex-direction: column; gap: 1px;
+  background: var(--hairline); border: 1px solid var(--hairline);
+  border-radius: 8px; overflow: hidden; margin-bottom: 12px;
+}
+.status-row {
+  display: flex; align-items: center; justify-content: space-between;
+  background: var(--surface-alt); padding: 12px 14px;
+  font: 500 12px var(--f-mono);
+}
+.status-row .name { color: var(--text); }
+.status-row .cat { display: flex; align-items: center; gap: 9px; color: var(--fog-dim); }
+.dot { width: 6px; height: 6px; border-radius: 50%; background: var(--positive); flex-shrink: 0; }
+.metrics {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+  background: var(--hairline); border: 1px solid var(--hairline);
+  border-radius: 8px; overflow: hidden; font: 500 11px var(--f-mono);
+}
+.metrics > div { background: var(--surface-alt); padding: 12px 14px; }
+.metrics .lbl { color: var(--fog-dim); margin-bottom: 5px; }
+.metrics .big { color: #fff; font-size: 16px; }
+.metrics .big.beam { color: var(--beam); }
+.metrics .big.pos { color: var(--positive); }
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-left { border-right: 0; border-bottom: 1px solid var(--hairline); }
+}
+
+/* ---------- products ---------- */
+.products-head {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  gap: 20px; padding: 34px var(--pad-x) 22px;
+}
+.products-head .note { font: 500 12px var(--f-mono); color: var(--fog-dim); }
+
+.product-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+  padding: 8px var(--pad-x) 40px;
+}
+.pcard {
+  --acc: var(--beam);
+  position: relative;
+  display: flex; flex-direction: column; gap: 15px;
+  background: var(--panel);
+  border: 1px solid var(--hairline);
+  border-radius: 14px;
+  padding: 22px 22px 20px;
+  transition: transform .16s ease, border-color .16s ease, background-color .16s ease;
+}
+.pcard::before {
+  content: ""; position: absolute; inset: 0;
+  border-radius: 14px; padding: 1px; pointer-events: none;
+  background: linear-gradient(150deg, color-mix(in srgb, var(--acc) 40%, transparent), transparent 55%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  opacity: 0; transition: opacity .16s ease;
+}
+.pcard:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--acc) 30%, var(--hairline)); background: #111726; }
+.pcard:hover::before { opacity: 1; }
+
+.pcard-top { display: flex; align-items: center; justify-content: space-between; }
+.plogo {
+  width: 46px; height: 46px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  background: color-mix(in srgb, var(--acc) 15%, transparent);
+  border: 1px solid color-mix(in srgb, var(--acc) 35%, transparent);
+  color: var(--acc);
+}
+.plogo svg { width: 23px; height: 23px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+.pname { display: flex; align-items: baseline; gap: 9px; font: 600 21px var(--f-display); color: #fff; }
+.pname .pidx { font: 500 11px var(--f-mono); color: var(--acc); letter-spacing: .04em; }
+.pmeta { font: 500 11px var(--f-mono); color: var(--fog-dim); letter-spacing: .1em; margin-top: 5px; }
+.pdesc { font: 400 14px/1.55 var(--f-body); color: var(--fog); }
+
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip {
+  font: 500 10.5px var(--f-mono); color: var(--text);
+  padding: 3px 8px; background: var(--ink);
+  border: 1px solid var(--hairline-2); border-radius: 5px;
+}
+.status-pill {
+  display: inline-block;
+  font: 600 10px var(--f-mono); letter-spacing: .1em;
+  padding: 4px 9px; border: 1px solid var(--hairline-3);
+  border-radius: 5px; color: var(--text);
+}
+
+.pmetric { display: flex; align-items: baseline; gap: 8px; }
+.pmetric .metric-v { font: 600 17px var(--f-display); color: #fff; }
+.pmetric .metric-l { font: 500 10px var(--f-mono); color: var(--fog-dim); letter-spacing: .06em; text-transform: uppercase; }
+
+.pcard-links {
+  margin-top: auto; display: flex; align-items: center; flex-wrap: wrap; gap: 8px;
+  padding-top: 15px; border-top: 1px solid var(--hairline);
+}
+.plink {
+  display: inline-flex; align-items: center; gap: 7px;
+  font: 500 12px var(--f-mono); color: var(--text);
+  padding: 7px 11px; border-radius: 7px;
+  border: 1px solid var(--hairline-2);
+  transition: border-color .15s ease, color .15s ease, background-color .15s ease;
+}
+.plink svg { width: 14px; height: 14px; flex-shrink: 0; }
+.plink svg.stroke { fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+a.plink:hover { color: #fff; border-color: var(--acc); background: color-mix(in srgb, var(--acc) 12%, transparent); }
+.plink-soon { color: var(--fog-dim); cursor: default; }
+.plink-soon .soon {
+  font: 600 9px var(--f-mono); letter-spacing: .12em; text-transform: uppercase;
+  color: var(--fog-dim); padding: 2px 6px;
+  border: 1px solid var(--hairline-2); border-radius: 20px;
+}
+@media (max-width: 1024px) { .product-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px)  { .product-grid { grid-template-columns: 1fr; } }
+
+/* ---------- generic grids ---------- */
+.grid-3 {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+  background: var(--hairline); border: 1px solid var(--hairline);
+  border-radius: var(--r-card); overflow: hidden;
+}
+.grid-3 > .cell { background: var(--ink); padding: 24px; }
+.cell .h { font: 600 17px var(--f-display); color: #fff; margin-bottom: 8px; }
+.cell .d { font: 400 13.5px/1.5 var(--f-body); color: var(--fog); }
+
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+.service-card {
+  background: var(--panel); border: 1px solid var(--hairline);
+  border-radius: var(--r-card); padding: 28px;
+}
+.service-card .k { font: 500 11px var(--f-mono); color: var(--beam); margin-bottom: 14px; }
+.service-card h3 { font: 600 23px/1.15 var(--f-display); color: #fff; margin-bottom: 12px; }
+.service-card p { font: 400 14.5px/1.6 var(--f-body); color: var(--fog); margin: 0 0 18px; }
+.service-items { display: flex; flex-wrap: wrap; gap: 8px; }
+.service-items .chip { padding: 6px 11px; font-size: 12px; background: var(--ink); }
+
+.process { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.process-step { border-top: 2px solid var(--signal); padding-top: 16px; }
+.process-step .n { font: 500 12px var(--f-mono); color: var(--beam); margin-bottom: 10px; }
+.process-step .t { font: 600 19px var(--f-display); color: #fff; margin-bottom: 8px; }
+.process-step .d { font: 400 13.5px/1.5 var(--f-body); color: var(--fog); }
+
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); }
+.stat { padding: 34px var(--pad-x); border-right: 1px solid var(--hairline); }
+.stat:last-child { border-right: 0; }
+.stat .v { font: 600 clamp(30px, 5vw, 40px)/1 var(--f-display); color: #fff; letter-spacing: -.02em; }
+.stat .l { font: 500 11px var(--f-mono); color: var(--fog-dim); letter-spacing: .1em; margin-top: 10px; text-transform: uppercase; }
+
+.stack-chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.stack-chip {
+  font: 500 13px var(--f-mono); color: var(--text);
+  padding: 9px 14px; border: 1px solid var(--hairline-3); border-radius: 7px;
+}
+
+.faq-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+  background: var(--hairline); border: 1px solid var(--hairline);
+  border-radius: var(--r-card); overflow: hidden;
+}
+.faq { background: var(--ink); padding: 24px; }
+.faq .q { font: 600 16px/1.3 var(--f-display); color: #fff; margin-bottom: 10px; }
+.faq .a { font: 400 13.5px/1.55 var(--f-body); color: var(--fog); }
+
+@media (max-width: 820px) {
+  .grid-3 { grid-template-columns: 1fr; }
+  .grid-2 { grid-template-columns: 1fr; }
+  .process { grid-template-columns: 1fr 1fr; }
+  .stats { grid-template-columns: 1fr 1fr; }
+  .stat { border-bottom: 1px solid var(--hairline); }
+  .stat:nth-child(odd) { border-right: 1px solid var(--hairline); }
+  .stat:nth-child(even) { border-right: 0; }
+  .faq-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .process { grid-template-columns: 1fr; }
+}
+
+/* ---------- brand kit ---------- */
+.brand-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.bk-card { background: var(--panel); border: 1px solid var(--hairline); border-radius: var(--r-card); padding: 28px; }
+.bk-label { font: 500 11px var(--f-mono); color: var(--fog-dim); letter-spacing: .12em; }
+.bk-lockup { display: flex; flex-direction: column; gap: 22px; }
+.bk-lockup .rowline { display: flex; align-items: center; gap: 13px; }
+.bk-lockup .hr { height: 1px; background: var(--hairline); }
+.bk-word { font: 700 26px var(--f-display); color: #fff; letter-spacing: .02em; }
+.bk-word .dev { color: var(--beam); }
+.bk-url { font: 600 18px var(--f-mono); color: var(--fog); letter-spacing: .08em; }
+.swatches { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 18px; }
+.swatch .chipbox { height: 52px; border-radius: 8px; border: 1px solid var(--hairline-2); }
+.swatch .nm { font: 600 12px var(--f-body); color: var(--text); margin-top: 8px; }
+.swatch .hx { font: 500 10.5px var(--f-mono); color: var(--fog-dim); text-transform: uppercase; }
+.bk-wide { grid-column: 1 / -1; }
+.type-usage { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: center; }
+.type-spec .big { font: 600 30px var(--f-display); color: #fff; letter-spacing: -.01em; }
+.type-spec .sub { font: 500 12px var(--f-mono); color: var(--fog-dim); margin: 4px 0 18px; }
+.type-spec .l1 { font: 400 18px var(--f-body); color: var(--text); }
+.type-spec .l2 { font: 500 15px var(--f-mono); color: var(--fog); margin-top: 6px; }
+.mark-tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 14px; }
+.mark-tile { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; border-radius: 10px; }
+.mark-tile .m { width: 40px; height: 40px; }
+.mt-ink { background: var(--ink); border: 1px solid var(--hairline-2); color: #fff; }
+.mt-blue { background: var(--signal); color: #fff; }
+.mt-paper { background: #f6f7f9; color: var(--ink); }
+.social-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+.social-head .h { font: 500 11px var(--f-mono); color: var(--fog-dim); letter-spacing: .12em; }
+.social-head .a { font: 500 12px var(--f-mono); color: var(--fog); }
+.social-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 16px; }
+.social-card { display: flex; align-items: center; gap: 14px; background: var(--ink); border: 1px solid var(--hairline-2); border-radius: 10px; padding: 16px 18px; }
+.social-card .ic { width: 40px; height: 40px; border-radius: 10px; background: var(--slate); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.social-card .pn { font: 600 15px var(--f-display); color: #fff; }
+.social-card .hd { font: 500 12px var(--f-mono); color: var(--fog); }
+.banner { border: 1px solid var(--hairline-2); border-radius: 10px; overflow: hidden; }
+.banner-top { height: 92px; background: radial-gradient(130% 180% at 12% 0%, rgba(30,64,175,.55), var(--ink)); display: flex; align-items: center; padding: 0 24px; }
+.banner-top .w { font: 700 28px var(--f-display); color: #fff; letter-spacing: .02em; }
+.banner-top .w .dev { color: var(--beam); }
+.banner-top .t { margin-left: auto; font: 500 11px var(--f-mono); color: var(--fog); letter-spacing: .16em; }
+.banner-bot { display: flex; align-items: flex-end; gap: 14px; padding: 0 24px 16px; margin-top: -26px; background: var(--ink); }
+.avatar { width: 60px; height: 60px; border-radius: 50%; background: var(--ink); border: 3px solid var(--panel); display: flex; align-items: center; justify-content: center; color: #fff; flex-shrink: 0; }
+.avatar .m { width: 32px; height: 32px; }
+.banner-bot .nm { font: 600 15px var(--f-display); color: #fff; }
+.banner-bot .hd { font: 500 12px var(--f-mono); color: var(--fog); }
+@media (max-width: 820px) {
+  .brand-grid { grid-template-columns: 1fr; }
+  .type-usage { grid-template-columns: 1fr; }
+  .social-cards { grid-template-columns: 1fr; }
+}
+
+/* ---------- CTA ---------- */
+.cta {
+  padding: 56px var(--pad-x); text-align: center;
+  background: radial-gradient(120% 130% at 50% 0%, rgba(30,64,175,.28), transparent 62%);
+}
+.cta h2 { font: 600 clamp(32px, 6vw, 44px)/1.05 var(--f-display); color: #fff; letter-spacing: -.02em; margin-bottom: 14px; }
+.cta p { font: 400 16px var(--f-body); color: var(--fog); margin: 0 0 26px; }
+.cta-row { display: inline-flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: center; }
+.cta-email { font: 500 14px var(--f-mono); color: var(--beam); }
+
+/* ---------- footer ---------- */
+.footer {
+  display: flex; flex-wrap: wrap; gap: 16px;
+  justify-content: space-between; align-items: center;
+  padding: 24px var(--pad-x);
+  background: var(--surface-alt);
+  border-top: 1px solid var(--hairline);
+  font: 500 12px var(--f-mono); color: var(--fog-dim);
+}
+.footer .brand-mini { display: flex; align-items: center; gap: 10px; }
+.footer .brand-mini .m { width: 20px; height: 20px; color: var(--fog); }
+.footer-links { display: flex; flex-wrap: wrap; gap: 24px; }
+.footer-links a { color: var(--fog-dim); }
+.footer-links a:hover { color: var(--fog); }
+
+.skip {
+  position: absolute; left: -999px; top: 0;
+  background: var(--signal); color: #fff; padding: 10px 16px;
+  border-radius: var(--r-btn); z-index: 100;
+}
+.skip:focus { left: 12px; top: 12px; }
+</style>
+</head>
+<body>
+<a class="skip" href="#products">Skip to content</a>
+
+<!-- reusable hook logomark -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="hookmark" viewBox="0 0 120 120">
+    <path d="M64 30 L64 66 C64 86 46 90 43 72 C41.5 64 48 62 52 67" fill="none" stroke="currentColor" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="64" cy="26" r="9" fill="none" stroke="#3b82f6" stroke-width="7"/>
+  </symbol>
+  <!-- per-product logomarks -->
+  <symbol id="ic-os" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="14" rx="2"/><path d="M7 10l2.4 2.2L7 14.4"/><path d="M12.2 14.6h4.3"/></symbol>
+  <symbol id="ic-wallet" viewBox="0 0 24 24"><rect x="3.5" y="6" width="17" height="12.5" rx="2.5"/><path d="M3.5 10.5h17"/><circle cx="16.3" cy="14.4" r="1.15"/></symbol>
+  <symbol id="ic-oracle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="7.5"/><circle cx="12" cy="12" r="2.7"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2"/></symbol>
+  <symbol id="ic-rpc" viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="6" rx="1.6"/><rect x="3.5" y="13" width="17" height="6" rx="1.6"/><path d="M7.4 7.5h.01M7.4 16h.01"/></symbol>
+  <symbol id="ic-swap" viewBox="0 0 24 24"><path d="M6.5 8.5h11l-3-3"/><path d="M17.5 15.5h-11l3 3"/></symbol>
+  <symbol id="ic-ext" viewBox="0 0 24 24"><path d="M8 16 16 8M9.5 8H16v6.5"/></symbol>
+</svg>
+
+<div class="wrap">
+
+  <!-- TICKER -->
+  <div class="ticker" role="marquee" aria-label="System status">
+    <span class="live">● LIVE</span>
+    <span class="tag">HOOKDEV // WEB3 INFRASTRUCTURE STUDIO</span>
+    <span class="feed">
+      <span>HOOKOS <span class="up">▲</span></span>
+      <span>OV2 <span class="up">▲</span></span>
+      <span>HOOKRPC <span style="color:var(--beam)">99.98%</span></span>
+      <span>HOOKSWAP <span class="up">▲</span></span>
+    </span>
+  </div>
+
+  <!-- NAV -->
+  <nav class="nav" aria-label="Primary">
+    <a class="brand" href="#top" aria-label="HookDev home">
+      <svg class="mark" aria-hidden="true"><use href="#hookmark"/></svg>
+      <span class="wordmark">HOOK<span class="dev">DEV</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="#products">Products</a>
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#brand">Brand</a>
+      <a class="btn btn-primary" href="mailto:build@hookdev.xyz?subject=Start%20a%20build">Start a build →</a>
+    </div>
+  </nav>
+
+  <main id="top">
+
+    <!-- HERO -->
+    <section class="hero section" aria-labelledby="hero-h1">
+      <div class="hero-left">
+        <p class="hero-eyebrow">// UNISWAP V4 HOOK STUDIO</p>
+        <h1 class="hero-h1" id="hero-h1">We build the hooks that power onchain markets.</h1>
+        <p class="hero-p">HookDev is a Web3 development studio shipping five products and custom Uniswap V4 hooks — from dynamic fees to fully programmable pools.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="mailto:build@hookdev.xyz?subject=Book%20a%20hook%20build">Book a hook build</a>
+          <a class="btn btn-ghost" href="#products">View products</a>
+        </div>
+        <div class="hero-facts">
+          <div><div class="v">EST. 2023</div>ONCHAIN STUDIO</div>
+          <div><div class="v">V4 + AA</div>CORE FOCUS</div>
+          <div><div class="v">5 SHIPPED</div>PRODUCTS</div>
+        </div>
+      </div>
+      <aside class="hero-right" aria-label="System status board">
+        <div class="status-head"><span>SYSTEM // STATUS</span><span class="online">● ALL ONLINE</span></div>
+        <div class="status-list" id="status-list"></div>
+        <div class="metrics">
+          <div><div class="lbl">HOOKS SHIPPED</div><div class="big">12+</div></div>
+          <div><div class="lbl">RPC UPTIME</div><div class="big beam">99.98%</div></div>
+          <div><div class="lbl">PRODUCTS</div><div class="big">05</div></div>
+          <div><div class="lbl">STATUS</div><div class="big pos">SHIPPING</div></div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section class="section" id="products" aria-labelledby="products-h">
+      <div class="products-head">
+        <div>
+          <p class="eyebrow">Products / 01—05</p>
+          <h2 class="section-h" id="products-h">Five products, one stack.</h2>
+        </div>
+        <span class="note">the HookDev suite ↓</span>
+      </div>
+      <div class="product-grid" id="product-rows"></div>
+    </section>
+
+    <!-- CAPABILITIES -->
+    <section class="section section-pad" id="capabilities" aria-labelledby="cap-h">
+      <p class="eyebrow">Capabilities</p>
+      <h2 class="section-h" id="cap-h" style="margin-bottom:26px">Hooks we build.</h2>
+      <div class="grid-3" id="cap-grid"></div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section section-pad" id="services" aria-labelledby="svc-h">
+      <p class="eyebrow">Services</p>
+      <h2 class="section-h" id="svc-h" style="margin-bottom:28px">Work with the studio.</h2>
+      <div class="grid-2" id="svc-grid"></div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="section section-pad" id="process" aria-labelledby="proc-h">
+      <p class="eyebrow">Process</p>
+      <h2 class="section-h" id="proc-h" style="margin-bottom:28px">Spec to mainnet.</h2>
+      <div class="process" id="process-grid"></div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats section" aria-label="Key stats" id="stats-grid"></section>
+
+    <!-- TECH STACK -->
+    <section class="section section-pad" aria-labelledby="stack-h">
+      <p class="eyebrow" id="stack-h" style="margin-bottom:18px">Stack</p>
+      <div class="stack-chips" id="stack-chips"></div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section-pad" id="faq" aria-labelledby="faq-h">
+      <p class="eyebrow">FAQ</p>
+      <h2 class="section-h" id="faq-h" style="margin-bottom:26px">Common questions.</h2>
+      <div class="faq-grid" id="faq-grid"></div>
+    </section>
+
+    <!-- BRAND KIT -->
+    <section class="section section-pad" id="brand" aria-labelledby="brand-h">
+      <p class="eyebrow">Brand Kit</p>
+      <h2 class="section-h" id="brand-h" style="margin-bottom:28px">The HookDev identity.</h2>
+      <div class="brand-grid">
+
+        <div class="bk-card bk-lockup">
+          <div class="bk-label">LOGO LOCKUP</div>
+          <div class="rowline">
+            <svg style="width:40px;height:40px;color:#e6e9ef" aria-hidden="true"><use href="#hookmark"/></svg>
+            <span class="bk-word">HOOK<span class="dev">DEV</span></span>
+          </div>
+          <div class="hr"></div>
+          <div class="rowline">
+            <svg style="width:32px;height:32px;color:var(--beam)" aria-hidden="true"><use href="#hookmark"/></svg>
+            <span class="bk-url">hookdev.xyz</span>
+          </div>
+        </div>
+
+        <div class="bk-card">
+          <div class="bk-label">PALETTE</div>
+          <div class="swatches" id="palette"></div>
+        </div>
+
+        <div class="bk-card bk-wide">
+          <div class="type-usage">
+            <div class="type-spec">
+              <div class="bk-label" style="margin-bottom:16px">TYPOGRAPHY</div>
+              <div class="big">Space Grotesk</div>
+              <div class="sub">DISPLAY / HEADINGS</div>
+              <div class="l1">IBM Plex Sans — body copy</div>
+              <div class="l2">IBM Plex Mono — data &amp; labels</div>
+            </div>
+            <div>
+              <div class="bk-label" style="margin-bottom:14px">MARK USAGE</div>
+              <div class="mark-tiles">
+                <div class="mark-tile mt-ink"><svg class="m" aria-hidden="true"><use href="#hookmark"/></svg></div>
+                <div class="mark-tile mt-blue"><svg class="m" aria-hidden="true"><use href="#hookmark"/></svg></div>
+                <div class="mark-tile mt-paper"><svg class="m" aria-hidden="true"><use href="#hookmark"/></svg></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bk-card bk-wide">
+          <div class="social-head">
+            <div class="h">SOCIAL</div>
+            <div class="a">@hookdev</div>
+          </div>
+          <div class="social-cards">
+            <div class="social-card">
+              <div class="ic"><svg viewBox="0 0 24 24" width="17" height="17" fill="#fff" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.66l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25h6.83l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></div>
+              <div><div class="pn">X</div><div class="hd">@hookdev</div></div>
+            </div>
+            <div class="social-card">
+              <div class="ic"><svg viewBox="0 0 24 24" width="19" height="19" fill="#fff" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></div>
+              <div><div class="pn">Facebook</div><div class="hd">/hookdev</div></div>
+            </div>
+            <div class="social-card">
+              <div class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="#fff" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></div>
+              <div><div class="pn">YouTube</div><div class="hd">@hookdev</div></div>
+            </div>
+          </div>
+          <div class="banner">
+            <div class="banner-top">
+              <span class="w">HOOK<span class="dev">DEV</span></span>
+              <span class="t">UNISWAP V4 HOOK STUDIO</span>
+            </div>
+            <div class="banner-bot">
+              <div class="avatar"><svg class="m" aria-hidden="true"><use href="#hookmark"/></svg></div>
+              <div><div class="nm">HookDev</div><div class="hd">@hookdev · hookdev.xyz</div></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta section" aria-labelledby="cta-h">
+      <h2 id="cta-h">Let's build your hook.</h2>
+      <p>From concept to mainnet. Tell us what your pool should do.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="mailto:build@hookdev.xyz?subject=Start%20a%20build">Start a build →</a>
+        <a class="cta-email" href="mailto:build@hookdev.xyz">build@hookdev.xyz</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="brand-mini">
+      <svg class="m" aria-hidden="true"><use href="#hookmark"/></svg>
+      <span>HOOKDEV © 2026</span>
+    </div>
+    <div class="footer-links">
+      <a href="#products">Products</a>
+      <a href="#services">Services</a>
+      <a href="#faq">Docs</a>
+      <a href="https://x.com/hookdev">X / @hookdev</a>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+/* ============================================================
+   Static content — single source of truth (mirrors the design
+   handoff's renderVals()). No fetching; everything renders
+   client-side from these typed-ish data arrays.
+   ============================================================ */
+const DATA = {
+  products: [
+    { idx: "01", name: "HookOS", cat: "FRAMEWORK", chain: "EVM", status: "LIVE", icon: "ic-os", accent: "#3B82F6", url: "https://hookos.fun/", desc: "Modular runtime for building, simulating, and shipping Uniswap V4 hooks.", metric: { v: "120+", l: "Hooks scaffolded" }, feats: ["CLI + SDK", "Fork simulation", "Hook templates"] },
+    { idx: "02", name: "HookOS Wallet", cat: "WALLET", chain: "Base · Arbitrum", status: "LIVE", icon: "ic-wallet", accent: "#22C55E", url: "https://hookoswallet.xyz/", desc: "Account-abstraction wallet purpose-built for hook-powered DeFi.", metric: { v: "4337", l: "Smart accounts" }, feats: ["Passkeys", "Batched swaps", "Gas sponsorship"] },
+    { idx: "03", name: "OV2", cat: "ORACLE", chain: "Cross-chain", status: "BETA", icon: "ic-oracle", accent: "#A855F7", url: "https://ov2.fun/", desc: "Manipulation-resistant, low-latency price oracle feeding hooks on-chain.", metric: { v: "<1 blk", l: "Update latency" }, feats: ["TWAP + spot", "Manipulation guard", "Push + pull"] },
+    { idx: "04", name: "HookRPC", cat: "INFRA", chain: "Multi-chain", status: "LIVE", icon: "ic-rpc", accent: "#38BDF8", url: "https://hookrpc.xyz/", desc: "High-availability RPC and indexing tuned for hook-heavy workloads.", metric: { v: "99.98%", l: "Uptime" }, feats: ["Archive nodes", "Hook indexing", "WebSocket"] },
+    { idx: "05", name: "HookSwap", cat: "DEX", chain: "Unichain", status: "BETA", icon: "ic-swap", accent: "#F59E0B", url: "https://hookswap.org/", desc: "A DEX where every pool is programmable through hooks.", metric: { v: "$40M+", l: "Routed volume" }, feats: ["Hook pools", "MEV-aware", "Limit orders"] },
+  ],
+  capabilities: [
+    { name: "Dynamic Fees", desc: "Fees that respond to volatility, volume, or time of day." },
+    { name: "LVR / MEV Mitigation", desc: "Capture or neutralize loss-versus-rebalancing at the pool." },
+    { name: "On-chain Limit Orders", desc: "Resting orders executed directly inside the pool." },
+    { name: "TWAMM", desc: "Time-weighted market makers for large orders, split over time." },
+    { name: "Custom Oracles", desc: "Pool-native price feeds with manipulation guards." },
+    { name: "Gated & KYC Pools", desc: "Permissioned liquidity with on-chain compliance rules." },
+  ],
+  services: [
+    { k: "S-01", name: "Uniswap V4 Hook Development", desc: "Custom hooks engineered end-to-end — from spec to audit-ready mainnet deployment.", items: ["Dynamic fees", "LVR / MEV mitigation", "On-chain limit orders", "Gated & KYC pools"] },
+    { k: "S-02", name: "Web3 Developer Services", desc: "Full-stack protocol engineering, from smart contracts to production infrastructure.", items: ["Smart contracts", "Audit prep", "Protocol infra", "dApp frontends"] },
+  ],
+  process: [
+    { n: "01", title: "Scope", desc: "We map your pool logic, constraints, and threat model into a clear spec." },
+    { n: "02", title: "Build", desc: "Hooks written in Solidity, tested with Foundry, simulated against forks." },
+    { n: "03", title: "Harden", desc: "Invariant tests, gas profiling, and audit-ready documentation." },
+    { n: "04", title: "Ship", desc: "Mainnet deployment, monitoring, and post-launch support." },
+  ],
+  stats: [
+    { v: "5", l: "Products shipped" },
+    { v: "12+", l: "V4 hooks deployed" },
+    { v: "99.98%", l: "RPC uptime" },
+    { v: "$40M+", l: "Volume routed" },
+  ],
+  stack: ["Solidity", "Foundry", "Uniswap V4", "EIP-4337", "Viem", "TypeScript", "The Graph", "Base", "Arbitrum", "Unichain"],
+  faqs: [
+    { q: "What is a Uniswap V4 hook?", a: "A contract that runs custom logic at key points in a pool's lifecycle — before and after swaps, liquidity changes, and initialization — letting you reshape how a market behaves." },
+    { q: "Do you audit the hooks you build?", a: "We deliver audit-ready code with full test coverage and coordinate third-party audits; we don't self-certify security." },
+    { q: "Which chains do you deploy to?", a: "Any EVM chain running Uniswap V4 — including Base, Arbitrum, and Unichain." },
+    { q: "Can we license the products standalone?", a: "Yes. HookOS, OV2, and HookRPC are available on their own or bundled with a build engagement." },
+  ],
+  palette: [
+    { name: "Ink", hex: "#0A0E14" },
+    { name: "Slate", hex: "#141B2D" },
+    { name: "Signal", hex: "#1E40AF" },
+    { name: "Beam", hex: "#3B82F6" },
+    { name: "Fog", hex: "#8B94A6" },
+    { name: "Paper", hex: "#F6F7F9" },
+  ],
+};
+
+const el = (tag, cls, html) => {
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (html != null) n.innerHTML = html;
+  return n;
+};
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const chip = f => `<span class="chip">${esc(f)}</span>`;
+
+// hero status board
+DATA.products.forEach(p => {
+  document.getElementById("status-list").appendChild(el("div", "status-row",
+    `<span class="name">${esc(p.name)}</span><span class="cat"><span>${esc(p.cat)}</span><span class="dot"></span></span>`));
+});
+
+// product cards
+const X_PATH = "M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.66l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25h6.83l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z";
+const domain = u => u.replace(/^https?:\/\//, "").replace(/\/$/, "");
+DATA.products.forEach(p => {
+  document.getElementById("product-rows").appendChild(el("article", "pcard", `
+    <div class="pcard-top">
+      <div class="plogo"><svg aria-hidden="true"><use href="#${esc(p.icon)}"/></svg></div>
+      <span class="status-pill">${esc(p.status)}</span>
+    </div>
+    <div>
+      <div class="pname">${esc(p.name)} <span class="pidx">${esc(p.idx)}</span></div>
+      <div class="pmeta">${esc(p.cat)} · ${esc(p.chain)}</div>
+    </div>
+    <div class="pdesc">${esc(p.desc)}</div>
+    <div class="chips">${p.feats.map(chip).join("")}</div>
+    <div class="pmetric"><span class="metric-v">${esc(p.metric.v)}</span><span class="metric-l">${esc(p.metric.l)}</span></div>
+    <div class="pcard-links">
+      <a class="plink" href="${esc(p.url)}" target="_blank" rel="noopener" aria-label="${esc(p.name)} website">
+        <svg class="stroke" aria-hidden="true"><use href="#ic-ext"/></svg>${esc(domain(p.url))}
+      </a>
+      <span class="plink plink-soon" aria-label="${esc(p.name)} on X — coming soon">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="${X_PATH}"/></svg>
+        X <span class="soon">Soon</span>
+      </span>
+    </div>`));
+});
+
+// capabilities
+DATA.capabilities.forEach(c => {
+  document.getElementById("cap-grid").appendChild(el("div", "cell",
+    `<div class="h">${esc(c.name)}</div><div class="d">${esc(c.desc)}</div>`));
+});
+
+// services
+DATA.services.forEach(s => {
+  document.getElementById("svc-grid").appendChild(el("article", "service-card", `
+    <div class="k">${esc(s.k)}</div>
+    <h3>${esc(s.name)}</h3>
+    <p>${esc(s.desc)}</p>
+    <div class="service-items">${s.items.map(chip).join("")}</div>`));
+});
+
+// process
+DATA.process.forEach(s => {
+  document.getElementById("process-grid").appendChild(el("div", "process-step",
+    `<div class="n">${esc(s.n)}</div><div class="t">${esc(s.title)}</div><div class="d">${esc(s.desc)}</div>`));
+});
+
+// stats
+DATA.stats.forEach(st => {
+  document.getElementById("stats-grid").appendChild(el("div", "stat",
+    `<div class="v">${esc(st.v)}</div><div class="l">${esc(st.l)}</div>`));
+});
+
+// stack
+DATA.stack.forEach(t => {
+  document.getElementById("stack-chips").appendChild(el("span", "stack-chip", esc(t)));
+});
+
+// faq
+DATA.faqs.forEach(f => {
+  document.getElementById("faq-grid").appendChild(el("div", "faq",
+    `<div class="q">${esc(f.q)}</div><div class="a">${esc(f.a)}</div>`));
+});
+
+// palette
+DATA.palette.forEach(c => {
+  document.getElementById("palette").appendChild(el("div", "swatch",
+    `<div class="chipbox" style="background:${esc(c.hex)}"></div><div class="nm">${esc(c.name)}</div><div class="hx">${esc(c.hex)}</div>`));
+});
+</script>
+</body>
+</html>

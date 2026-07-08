@@ -21,3 +21,9 @@ rad.json
 *.flf
 #Test results file
 TestResults.xml
+
+### Local verification artifacts ###
+.playwright-mcp/
+*-full.png
+products-redesign*.png
+products-mobile.png

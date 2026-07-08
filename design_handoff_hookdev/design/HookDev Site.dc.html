@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#e6e8ec;font-family:'IBM Plex Sans',system-ui,sans-serif}
+a{color:#3b82f6;text-decoration:none}
+a:hover{color:#60a5fa}
+.dv-turn{padding:44px 48px 36px;scroll-margin-top:16px}
+.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 26px}
+.dv-tid{font:600 10px 'IBM Plex Mono',monospace;padding:3px 7px;background:#0a0e14;color:#fff;border-radius:4px;text-decoration:none}
+.dv-tname{font:600 13px/1.2 'IBM Plex Sans',sans-serif;color:#0a0e14}
+.dv-opts{display:flex;flex-wrap:wrap;gap:40px;align-items:flex-start}
+.dv-opt{flex:none;display:flex;flex-direction:column;gap:12px;scroll-margin-top:16px}
+.dv-olabel{display:flex;align-items:baseline;gap:8px;font:400 11px/1.3 'IBM Plex Sans',sans-serif;color:rgba(10,14,20,.55)}
+.dv-oid{font:600 10.5px 'IBM Plex Mono',monospace;padding:3px 7px;background:rgba(10,14,20,.1);color:#0a0e14;border-radius:5px;text-decoration:none}
+.dv-opt:target .dv-oid{background:#1e40af;color:#fff}
+.dv-next{margin:26px 0 0;font:12px/1.6 'IBM Plex Sans',sans-serif;color:rgba(10,14,20,.5)}
+</style>
+</helmet>
+<section class="dv-turn" id="t1">
+  <div class="dv-thd"><a class="dv-tid" href="#t1">1</a><span class="dv-tname">HookDev — 2 directions (Bloomberg-modern × minimal)</span></div>
+  <div class="dv-opts">
+
+    <div class="dv-opt" id="1a">
+      <div class="dv-olabel"><a class="dv-oid" href="#1a">1a</a>Terminal — dark, data-dense, Bloomberg-leaning</div>
+      <div style="width:1200px;background:#0a0e14;color:#dfe4ec;border-radius:12px;overflow:hidden;box-shadow:0 24px 60px rgba(10,14,20,.28);border:1px solid rgba(255,255,255,.08)">
+
+        <!-- TICKER -->
+        <div style="display:flex;align-items:center;gap:26px;height:34px;padding:0 20px;background:#0b1120;border-bottom:1px solid rgba(255,255,255,.08);font:500 11px 'IBM Plex Mono',monospace;color:#6b7688;overflow:hidden;white-space:nowrap">
+          <span style="color:#3b82f6">● LIVE</span>
+          <span style="color:#8b94a6;letter-spacing:.14em">HOOKDEV // WEB3 INFRASTRUCTURE STUDIO</span>
+          <span style="margin-left:auto;display:flex;gap:22px">
+            <span>HOOKOS <span style="color:#22c55e">▲</span></span>
+            <span>OV2 <span style="color:#22c55e">▲</span></span>
+            <span>HOOKRPC <span style="color:#3b82f6">99.98%</span></span>
+            <span>HOOKSWAP <span style="color:#22c55e">▲</span></span>
+          </span>
+        </div>
+
+        <!-- NAV -->
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:18px 40px;border-bottom:1px solid rgba(255,255,255,.08)">
+          <div style="display:flex;align-items:center;gap:11px">
+            <div style="width:30px;height:30px;color:#e6e9ef"><dc-import name="HookMascot" hint-size="30px,30px"></dc-import></div>
+            <span style="font:700 19px 'Space Grotesk',sans-serif;letter-spacing:.02em;color:#fff">HOOK<span style="color:#3b82f6">DEV</span></span>
+          </div>
+          <div style="display:flex;align-items:center;gap:30px;font:500 12.5px 'IBM Plex Mono',monospace;color:#8b94a6">
+            <span>Products</span><span>Services</span><span>Process</span><span>Brand</span>
+            <span style="padding:9px 16px;background:#1e40af;color:#fff;border-radius:6px;font-weight:600">Start a build →</span>
+          </div>
+        </div>
+
+        <!-- HERO -->
+        <div style="display:grid;grid-template-columns:1.35fr 1fr;gap:0;border-bottom:1px solid rgba(255,255,255,.08)">
+          <div style="padding:56px 40px 48px;border-right:1px solid rgba(255,255,255,.08)">
+            <div style="font:500 12px 'IBM Plex Mono',monospace;color:#3b82f6;letter-spacing:.16em;margin-bottom:22px">// UNISWAP V4 HOOK STUDIO</div>
+            <h1 style="font:600 60px/1.02 'Space Grotesk',sans-serif;margin:0;letter-spacing:-.02em;color:#fff;text-wrap:balance">We build the hooks that power onchain markets.</h1>
+            <p style="font:400 17px/1.6 'IBM Plex Sans',sans-serif;color:#8b94a6;max-width:520px;margin:24px 0 32px">HookDev is a Web3 development studio shipping five products and custom Uniswap V4 hooks — from dynamic fees to fully programmable pools.</p>
+            <div style="display:flex;gap:12px">
+              <span style="padding:14px 24px;background:#1e40af;color:#fff;border-radius:8px;font:600 14px 'IBM Plex Sans',sans-serif">Book a hook build</span>
+              <span style="padding:14px 24px;background:transparent;color:#dfe4ec;border:1px solid rgba(255,255,255,.16);border-radius:8px;font:600 14px 'IBM Plex Sans',sans-serif">View products</span>
+            </div>
+            <div style="display:flex;gap:40px;margin-top:44px;padding-top:26px;border-top:1px solid rgba(255,255,255,.08);font:500 12px 'IBM Plex Mono',monospace;color:#6b7688">
+              <div><div style="color:#dfe4ec;font-size:14px;margin-bottom:4px">EST. 2023</div>ONCHAIN STUDIO</div>
+              <div><div style="color:#dfe4ec;font-size:14px;margin-bottom:4px">V4 + AA</div>CORE FOCUS</div>
+              <div><div style="color:#dfe4ec;font-size:14px;margin-bottom:4px">5 SHIPPED</div>PRODUCTS</div>
+            </div>
+          </div>
+          <div style="padding:32px 36px;display:flex;flex-direction:column;background:radial-gradient(120% 90% at 70% 0%,rgba(30,64,175,.22),transparent 60%)">
+            <div style="display:flex;justify-content:space-between;font:500 11px 'IBM Plex Mono',monospace;color:#6b7688;margin-bottom:14px"><span>SYSTEM // STATUS</span><span style="color:#22c55e">● ALL ONLINE</span></div>
+            <div style="flex:1;display:flex;flex-direction:column;gap:1px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);border-radius:8px;overflow:hidden;margin-bottom:12px">
+              <sc-for list="{{ products }}" as="p" hint-placeholder-count="5">
+                <div style="display:flex;align-items:center;justify-content:space-between;background:#0b1120;padding:12px 14px;font:500 12px 'IBM Plex Mono',monospace">
+                  <span style="color:#dfe4ec">{{ p.name }}</span>
+                  <span style="display:flex;align-items:center;gap:9px;color:#6b7688"><span>{{ p.cat }}</span><span style="width:6px;height:6px;border-radius:50%;background:#22c55e"></span></span>
+                </div>
+              </sc-for>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);border-radius:8px;overflow:hidden;font:500 11px 'IBM Plex Mono',monospace">
+              <div style="background:#0b1120;padding:12px 14px"><div style="color:#6b7688;margin-bottom:5px">HOOKS SHIPPED</div><div style="color:#fff;font-size:16px">12+</div></div>
+              <div style="background:#0b1120;padding:12px 14px"><div style="color:#6b7688;margin-bottom:5px">RPC UPTIME</div><div style="color:#3b82f6;font-size:16px">99.98%</div></div>
+              <div style="background:#0b1120;padding:12px 14px"><div style="color:#6b7688;margin-bottom:5px">PRODUCTS</div><div style="color:#fff;font-size:16px">05</div></div>
+              <div style="background:#0b1120;padding:12px 14px"><div style="color:#6b7688;margin-bottom:5px">STATUS</div><div style="color:#22c55e;font-size:16px">SHIPPING</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PRODUCTS -->
+        <div style="border-bottom:1px solid rgba(255,255,255,.08)">
+          <div style="display:flex;align-items:flex-end;justify-content:space-between;padding:34px 40px 22px">
+            <div>
+              <div style="font:500 12px 'IBM Plex Mono',monospace;color:#3b82f6;letter-spacing:.16em;margin-bottom:10px">PRODUCTS / 01—05</div>
+              <h2 style="font:600 34px/1 'Space Grotesk',sans-serif;margin:0;color:#fff;letter-spacing:-.02em">Five products, one stack.</h2>
+            </div>
+            <span style="font:500 12px 'IBM Plex Mono',monospace;color:#6b7688">the HookDev suite ↓</span>
+          </div>
+          <sc-for list="{{ products }}" as="p" hint-placeholder-count="5">
+            <div style="display:grid;grid-template-columns:52px 1.05fr 2fr 150px;align-items:start;gap:20px;padding:24px 40px;border-top:1px solid rgba(255,255,255,.08)">
+              <span style="font:500 13px 'IBM Plex Mono',monospace;color:#3b82f6">{{ p.idx }}</span>
+              <div>
+                <div style="font:600 20px 'Space Grotesk',sans-serif;color:#fff">{{ p.name }}</div>
+                <div style="font:500 11px 'IBM Plex Mono',monospace;color:#6b7688;letter-spacing:.1em;margin-top:5px">{{ p.cat }} · {{ p.chain }}</div>
+              </div>
+              <div>
+                <div style="font:400 14.5px/1.5 'IBM Plex Sans',sans-serif;color:#8b94a6;margin-bottom:11px">{{ p.desc }}</div>
+                <div style="display:flex;flex-wrap:wrap;gap:6px">
+                  <sc-for list="{{ p.feats }}" as="f" hint-placeholder-count="3">
+                    <span style="font:500 10.5px 'IBM Plex Mono',monospace;color:#dfe4ec;padding:3px 8px;background:#0f1420;border:1px solid rgba(255,255,255,.1);border-radius:5px">{{ f }}</span>
+                  </sc-for>
+                </div>
+              </div>
+              <div style="text-align:right">
+                <div style="font:600 16px 'Space Grotesk',sans-serif;color:#fff">{{ p.metric.v }}</div>
+                <div style="font:500 10px 'IBM Plex Mono',monospace;color:#6b7688;letter-spacing:.06em;margin:3px 0 9px;text-transform:uppercase">{{ p.metric.l }}</div>
+                <span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.1em;padding:4px 9px;border:1px solid rgba(255,255,255,.14);border-radius:5px;color:#dfe4ec">{{ p.status }}</span>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+
+        <!-- CAPABILITIES -->
+        <div style="padding:40px;border-bottom:1px solid rgba(255,255,255,.08)">
+          <div style="font:500 12px 'IBM Plex Mono',monospace;color:#3b82f6;letter-spacing:.16em;margin-bottom:10px">CAPABILITIES</div>
+          <h2 style="font:600 34px/1 'Space Grotesk',sans-serif;margin:0 0 26px;color:#fff;letter-spacing:-.02em">Hooks we build.</h2>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);border-radius:12px;overflow:hidden">
+            <sc-for list="{{ capabilities }}" as="c" hint-placeholder-count="6">
+              <div style="background:#0a0e14;padding:24px">
+                <div style="font:600 17px 'Space Grotesk',sans-serif;color:#fff;margin-bottom:8px">{{ c.name }}</div>
+                <div style="font:400 13.5px/1.5 'IBM Plex Sans',sans-serif;color:#8b94a6">{{ c.desc }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+        <!-- SERVICES -->
+        <div style="padding:40px;border-bottom:1px solid rgba(255,255,255,.08)">
+          <div style="font:500 12px 'IBM Plex Mono',monospace;color:#3b82f6;letter-spacing:.16em;margin-bottom:10px">SERVICES</div>
+          <h2 style="font:600 34px/1 'Space Grotesk',sans-serif;margin:0 0 28px;color:#fff;letter-spacing:-.02em">Work with the studio.</h2>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+            <sc-for list="{{ services }}" as="s" hint-placeholder-count="2">
+              <div style="background:#0f1420;border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:28px">
+                <div style="font:500 11px 'IBM Plex Mono',monospace;color:#3b82f6;margin-bottom:14px">{{ s.k }}</div>
+                <h3 style="font:600 23px/1.15 'Space Grotesk',sans-serif;margin:0 0 12px;color:#fff">{{ s.name }}</h3>
+                <p style="font:400 14.5px/1.6 'IBM Plex Sans',sans-serif;color:#8b94a6;margin:0 0 18px">{{ s.desc }}</p>
+                <div style="display:flex;flex-wrap:wrap;gap:8px">
+                  <sc-for list="{{ s.items }}" as="it" hint-placeholder-count="4">
+                    <span style="font:500 12px 'IBM Plex Mono',monospace;color:#dfe4ec;padding:6px 11px;background:#0a0e14;border:1px solid rgba(255,255,255,.1);border-radius:6px">{{ it }}</span>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+        <!-- PROCESS -->
+        <div style="padding:40px;border-bottom:1px solid rgba(255,255,255,.08)">
+          <div style="font:500 12px 'IBM Plex Mono',monospace;color:#3b82f6;letter-spacing:.16em;margin-bottom:10px">PROCESS</div>
+          <h2 style="font:600 34px/1 'Space Grotesk',sans-serif;margin:0 0 28px;color:#fff;letter-spacing:-.02em">Spec to mainnet.</h2>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px">
+            <sc-for list="{{ process }}" as="s" hint-placeholder-count="4">
+              <div style="border-top:2px solid #1e40af;padding-top:16px">
+                <div style="font:500 12px 'IBM Plex Mono',monospace;color:#3b82f6;margin-bottom:10px">{{ s.n }}</div>
+                <div style="font:600 19px 'Space Grotesk',sans-serif;color:#fff;margin-bottom:8px">{{ s.title }}</div>
+                <div style="font:400 13.5px/1.5 'IBM Plex Sans',sans-serif;color:#8b94a6">{{ s.desc }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+        <!-- STATS -->
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid rgba(255,255,255,.08)">
+          <sc-for list="{{ stats }}" as="st" hint-placeholder-count="4">
+            <div style="padding:34px 40px;border-right:1px solid rgba(255,255,255,.08)">
+              <div style="font:600 40px/1 'Space Grotesk',sans-serif;color:#fff;letter-spacing:-.02em">{{ st.v }}</div>
+              <div style="font:500 11px 'IBM Plex Mono',monospace;color:#6b7688;letter-spacing:.1em;margin-top:10px;text-transform:uppercase">{{ st.l }}</div>
+            </div>
+          </sc-for>
+        </div>
+
+        <!-- TECH STACK -->
+        <div style="padding:40px;border-bottom:1px solid rgba(255,255,255,.08)">
+          <div style="font:500 12px 'IBM Plex Mono',monospace;color:#3b82f6;letter-spacing:.16em;margin-bottom:18px">STACK</div>
+          <div style="display:flex;flex-wrap:wrap;gap:10px">
+            <sc-for list="{{ stack }}" as="t" hint-placeholder-count="10">
+              <span style="font:500 13px 'IBM Plex Mono',monospace;color:#dfe4ec;padding:9px 14px;border:1px solid rgba(255,255,255,.12);border-radius:7px">{{ t }}</span>
+            </sc-for>
+          </div>
+        </div>
+
+        <!-- FAQ -->
+        <div style="padding:40px;border-bottom:1px solid rgba(255,255,255,.08)">
+          <div style="font:500 12px 'IBM Plex Mono',monospace;color:#3b82f6;letter-spacing:.16em;margin-bottom:10px">FAQ</div>
+          <h2 style="font:600 34px/1 'Space Grotesk',sans-serif;margin:0 0 26px;color:#fff;letter-spacing:-.02em">Common questions.</h2>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);border-radius:12px;overflow:hidden">
+            <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="4">
+              <div style="background:#0a0e14;padding:24px">
+                <div style="font:600 16px/1.3 'Space Grotesk',sans-serif;color:#fff;margin-bottom:10px">{{ f.q }}</div>
+                <div style="font:400 13.5px/1.55 'IBM Plex Sans',sans-serif;color:#8b94a6">{{ f.a }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+        <!-- BRAND KIT -->
+        <div style="padding:40px;border-bottom:1px solid rgba(255,255,255,.08)">
+          <div style="font:500 12px 'IBM Plex Mono',monospace;color:#3b82f6;letter-spacing:.16em;margin-bottom:10px">BRAND KIT</div>
+          <h2 style="font:600 34px/1 'Space Grotesk',sans-serif;margin:0 0 28px;color:#fff;letter-spacing:-.02em">The HookDev identity.</h2>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+            <div style="background:#0f1420;border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:28px;display:flex;flex-direction:column;gap:22px">
+              <div style="font:500 11px 'IBM Plex Mono',monospace;color:#6b7688;letter-spacing:.12em">LOGO LOCKUP</div>
+              <div style="display:flex;align-items:center;gap:13px"><div style="width:40px;height:40px;color:#e6e9ef"><dc-import name="HookMascot" hint-size="40px,40px"></dc-import></div><span style="font:700 26px 'Space Grotesk',sans-serif;color:#fff;letter-spacing:.02em">HOOK<span style="color:#3b82f6">DEV</span></span></div>
+              <div style="height:1px;background:rgba(255,255,255,.08)"></div>
+              <div style="display:flex;align-items:center;gap:13px"><div style="width:32px;height:32px;color:#3b82f6"><dc-import name="HookMascot" hint-size="32px,32px"></dc-import></div><span style="font:600 18px 'IBM Plex Mono',monospace;color:#8b94a6;letter-spacing:.08em">hookdev.xyz</span></div>
+            </div>
+            <div style="background:#0f1420;border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:28px">
+              <div style="font:500 11px 'IBM Plex Mono',monospace;color:#6b7688;letter-spacing:.12em;margin-bottom:18px">PALETTE</div>
+              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px">
+                <sc-for list="{{ palette }}" as="c" hint-placeholder-count="6">
+                  <div>
+                    <div style="height:52px;border-radius:8px;border:1px solid rgba(255,255,255,.1);background:{{ c.hex }}"></div>
+                    <div style="font:600 12px 'IBM Plex Sans',sans-serif;color:#dfe4ec;margin-top:8px">{{ c.name }}</div>
+                    <div style="font:500 10.5px 'IBM Plex Mono',monospace;color:#6b7688">{{ c.hex }}</div>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+            <div style="grid-column:1 / -1;background:#0f1420;border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:28px;display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center">
+              <div>
+                <div style="font:500 11px 'IBM Plex Mono',monospace;color:#6b7688;letter-spacing:.12em;margin-bottom:16px">TYPOGRAPHY</div>
+                <div style="font:600 30px 'Space Grotesk',sans-serif;color:#fff;letter-spacing:-.01em">Space Grotesk</div>
+                <div style="font:500 12px 'IBM Plex Mono',monospace;color:#6b7688;margin:4px 0 18px">DISPLAY / HEADINGS</div>
+                <div style="font:400 18px 'IBM Plex Sans',sans-serif;color:#dfe4ec">IBM Plex Sans — body copy</div>
+                <div style="font:500 15px 'IBM Plex Mono',monospace;color:#8b94a6;margin-top:6px">IBM Plex Mono — data & labels</div>
+              </div>
+              <div>
+                <div style="font:500 11px 'IBM Plex Mono',monospace;color:#6b7688;letter-spacing:.12em;margin-bottom:14px">MARK USAGE</div>
+                <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+                  <div style="aspect-ratio:1;display:flex;align-items:center;justify-content:center;background:#0a0e14;border:1px solid rgba(255,255,255,.1);border-radius:10px;color:#fff"><div style="width:40px;height:40px"><dc-import name="HookMascot" hint-size="40px,40px"></dc-import></div></div>
+                  <div style="aspect-ratio:1;display:flex;align-items:center;justify-content:center;background:#1e40af;border-radius:10px;color:#fff"><div style="width:40px;height:40px"><dc-import name="HookMascot" hint-size="40px,40px"></dc-import></div></div>
+                  <div style="aspect-ratio:1;display:flex;align-items:center;justify-content:center;background:#f6f7f9;border-radius:10px;color:#0a0e14"><div style="width:40px;height:40px"><dc-import name="HookMascot" hint-size="40px,40px"></dc-import></div></div>
+                </div>
+              </div>
+            </div>
+            <div style="grid-column:1 / -1;background:#0f1420;border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:28px">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px">
+                <div style="font:500 11px 'IBM Plex Mono',monospace;color:#6b7688;letter-spacing:.12em">SOCIAL</div>
+                <div style="font:500 12px 'IBM Plex Mono',monospace;color:#8b94a6">@hookdev</div>
+              </div>
+              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px">
+                <div style="display:flex;align-items:center;gap:14px;background:#0a0e14;border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:16px 18px">
+                  <div style="width:40px;height:40px;border-radius:10px;background:#141b2d;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" width="17" height="17" fill="#fff"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.66l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25h6.83l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg></div>
+                  <div><div style="font:600 15px 'Space Grotesk',sans-serif;color:#fff">X</div><div style="font:500 12px 'IBM Plex Mono',monospace;color:#8b94a6">@hookdev</div></div>
+                </div>
+                <div style="display:flex;align-items:center;gap:14px;background:#0a0e14;border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:16px 18px">
+                  <div style="width:40px;height:40px;border-radius:10px;background:#141b2d;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" width="19" height="19" fill="#fff"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg></div>
+                  <div><div style="font:600 15px 'Space Grotesk',sans-serif;color:#fff">Facebook</div><div style="font:500 12px 'IBM Plex Mono',monospace;color:#8b94a6">/hookdev</div></div>
+                </div>
+                <div style="display:flex;align-items:center;gap:14px;background:#0a0e14;border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:16px 18px">
+                  <div style="width:40px;height:40px;border-radius:10px;background:#141b2d;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" width="20" height="20" fill="#fff"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg></div>
+                  <div><div style="font:600 15px 'Space Grotesk',sans-serif;color:#fff">YouTube</div><div style="font:500 12px 'IBM Plex Mono',monospace;color:#8b94a6">@hookdev</div></div>
+                </div>
+              </div>
+              <div style="border:1px solid rgba(255,255,255,.1);border-radius:10px;overflow:hidden">
+                <div style="height:92px;background:radial-gradient(130% 180% at 12% 0%,rgba(30,64,175,.55),#0a0e14);display:flex;align-items:center;padding:0 24px">
+                  <span style="font:700 28px 'Space Grotesk',sans-serif;color:#fff;letter-spacing:.02em">HOOK<span style="color:#3b82f6">DEV</span></span>
+                  <span style="margin-left:auto;font:500 11px 'IBM Plex Mono',monospace;color:#8b94a6;letter-spacing:.16em">UNISWAP V4 HOOK STUDIO</span>
+                </div>
+                <div style="display:flex;align-items:flex-end;gap:14px;padding:0 24px 16px;margin-top:-26px;background:#0a0e14">
+                  <div style="width:60px;height:60px;border-radius:50%;background:#0a0e14;border:3px solid #0f1420;display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0"><div style="width:32px;height:32px"><dc-import name="HookMascot" hint-size="32px,32px"></dc-import></div></div>
+                  <div style="padding-bottom:2px"><div style="font:600 15px 'Space Grotesk',sans-serif;color:#fff">HookDev</div><div style="font:500 12px 'IBM Plex Mono',monospace;color:#8b94a6">@hookdev · hookdev.xyz</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div style="padding:56px 40px;text-align:center;background:radial-gradient(120% 130% at 50% 0%,rgba(30,64,175,.28),transparent 62%)">
+          <h2 style="font:600 44px/1.05 'Space Grotesk',sans-serif;margin:0 0 14px;color:#fff;letter-spacing:-.02em">Let's build your hook.</h2>
+          <p style="font:400 16px 'IBM Plex Sans',sans-serif;color:#8b94a6;margin:0 0 26px">From concept to mainnet. Tell us what your pool should do.</p>
+          <div style="display:inline-flex;gap:12px;align-items:center">
+            <span style="padding:14px 26px;background:#1e40af;color:#fff;border-radius:8px;font:600 15px 'IBM Plex Sans',sans-serif">Start a build →</span>
+            <span style="font:500 14px 'IBM Plex Mono',monospace;color:#3b82f6">build@hookdev.xyz</span>
+          </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:24px 40px;background:#0b1120;border-top:1px solid rgba(255,255,255,.08);font:500 12px 'IBM Plex Mono',monospace;color:#6b7688">
+          <div style="display:flex;align-items:center;gap:10px"><div style="width:20px;height:20px;color:#8b94a6"><dc-import name="HookMascot" hint-size="20px,20px"></dc-import></div><span>HOOKDEV © 2026</span></div>
+          <div style="display:flex;gap:24px"><span>Products</span><span>Services</span><span>Docs</span><span>X / @hookdev</span></div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="dv-opt" id="1b">
+      <div class="dv-olabel"><a class="dv-oid" href="#1b">1b</a>Signal — light, spacious, minimal</div>
+      <div style="width:1200px;background:#ffffff;color:#0a0e14;border-radius:12px;overflow:hidden;box-shadow:0 24px 60px rgba(10,14,20,.18);border:1px solid rgba(10,14,20,.08)">
+
+        <!-- NAV -->
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:24px 48px;border-bottom:1px solid rgba(10,14,20,.08)">
+          <div style="display:flex;align-items:center;gap:11px">
+            <div style="width:30px;height:30px;color:#0a0e14"><dc-import name="HookMascot" hint-size="30px,30px"></dc-import></div>
+            <span style="font:700 20px 'Space Grotesk',sans-serif;letter-spacing:.02em;color:#0a0e14">HOOK<span style="color:#1e40af">DEV</span></span>
+          </div>
+          <div style="display:flex;align-items:center;gap:32px;font:500 14px 'IBM Plex Sans',sans-serif;color:#5b6472">
+            <span>Products</span><span>Services</span><span>Process</span><span>Brand</span>
+            <span style="padding:10px 18px;background:#0a0e14;color:#fff;border-radius:8px;font-weight:600">Start a build</span>
+          </div>
+        </div>
+
+        <!-- HERO -->
+        <div style="padding:88px 48px 72px;display:grid;grid-template-columns:1.3fr .9fr;gap:48px;align-items:center">
+          <div>
+            <div style="font:500 13px 'IBM Plex Mono',monospace;color:#1e40af;letter-spacing:.14em;margin-bottom:26px">UNISWAP V4 HOOK STUDIO</div>
+            <h1 style="font:600 72px/1 'Space Grotesk',sans-serif;margin:0;letter-spacing:-.03em;color:#0a0e14;text-wrap:balance">Hooks that power onchain <span style="color:#1e40af">markets</span>.</h1>
+            <p style="font:400 19px/1.6 'IBM Plex Sans',sans-serif;color:#5b6472;max-width:520px;margin:28px 0 36px">A Web3 development studio shipping five products and custom Uniswap V4 hooks — built end-to-end, from spec to mainnet.</p>
+            <div style="display:flex;gap:14px;align-items:center">
+              <span style="padding:15px 26px;background:#1e40af;color:#fff;border-radius:9px;font:600 15px 'IBM Plex Sans',sans-serif">Book a hook build</span>
+              <span style="padding:15px 26px;color:#0a0e14;border:1px solid rgba(10,14,20,.14);border-radius:9px;font:600 15px 'IBM Plex Sans',sans-serif">View products</span>
+            </div>
+          </div>
+          <div style="background:#0a0e14;border-radius:20px;padding:34px 36px;display:flex;flex-direction:column">
+            <div style="font:500 11px 'IBM Plex Mono',monospace;color:#6b7688;letter-spacing:.14em;margin-bottom:8px">STUDIO</div>
+            <div style="display:flex;align-items:baseline;justify-content:space-between;padding:15px 0;border-top:1px solid rgba(255,255,255,.1)"><span style="font:500 13px 'IBM Plex Sans',sans-serif;color:#8b94a6">Founded</span><span style="font:600 16px 'Space Grotesk',sans-serif;color:#fff">2023</span></div>
+            <div style="display:flex;align-items:baseline;justify-content:space-between;padding:15px 0;border-top:1px solid rgba(255,255,255,.1)"><span style="font:500 13px 'IBM Plex Sans',sans-serif;color:#8b94a6">Focus</span><span style="font:600 16px 'Space Grotesk',sans-serif;color:#fff">V4 + AA</span></div>
+            <div style="display:flex;align-items:baseline;justify-content:space-between;padding:15px 0;border-top:1px solid rgba(255,255,255,.1)"><span style="font:500 13px 'IBM Plex Sans',sans-serif;color:#8b94a6">Products</span><span style="font:600 16px 'Space Grotesk',sans-serif;color:#fff">5 shipped</span></div>
+            <div style="display:flex;align-items:baseline;justify-content:space-between;padding:15px 0 0;border-top:1px solid rgba(255,255,255,.1)"><span style="font:500 13px 'IBM Plex Sans',sans-serif;color:#8b94a6">Chains</span><span style="font:600 14px 'IBM Plex Mono',monospace;color:#3b82f6">Base·Arb·Uni</span></div>
+          </div>
+        </div>
+
+        <!-- PRODUCTS -->
+        <div style="padding:24px 48px 80px">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:40px">
+            <h2 style="font:600 40px/1 'Space Grotesk',sans-serif;margin:0;color:#0a0e14;letter-spacing:-.02em">Five products, one stack.</h2>
+            <span style="font:500 13px 'IBM Plex Mono',monospace;color:#8b94a6">01 — 05</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+            <sc-for list="{{ products }}" as="p" hint-placeholder-count="5">
+              <div style="border:1px solid rgba(10,14,20,.1);border-radius:14px;padding:30px 32px;display:flex;flex-direction:column;gap:16px">
+                <div style="display:flex;align-items:center;justify-content:space-between">
+                  <span style="font:500 13px 'IBM Plex Mono',monospace;color:#1e40af">{{ p.idx }}</span>
+                  <span style="font:600 10.5px 'IBM Plex Mono',monospace;letter-spacing:.1em;padding:4px 10px;border:1px solid rgba(10,14,20,.14);border-radius:20px;color:#5b6472">{{ p.status }}</span>
+                </div>
+                <div>
+                  <div style="font:600 24px 'Space Grotesk',sans-serif;color:#0a0e14">{{ p.name }}</div>
+                  <div style="font:500 11px 'IBM Plex Mono',monospace;color:#8b94a6;letter-spacing:.1em;margin-top:6px">{{ p.cat }} · {{ p.chain }}</div>
+                </div>
+                <div style="font:400 15px/1.55 'IBM Plex Sans',sans-serif;color:#5b6472">{{ p.desc }}</div>
+                <div style="display:flex;flex-wrap:wrap;gap:6px">
+                  <sc-for list="{{ p.feats }}" as="f" hint-placeholder-count="3">
+                    <span style="font:500 11px 'IBM Plex Mono',monospace;color:#0a0e14;padding:4px 9px;background:#f6f7f9;border:1px solid rgba(10,14,20,.1);border-radius:6px">{{ f }}</span>
+                  </sc-for>
+                </div>
+                <div style="display:flex;align-items:baseline;gap:8px;padding-top:14px;border-top:1px solid rgba(10,14,20,.08)">
+                  <span style="font:600 18px 'Space Grotesk',sans-serif;color:#0a0e14">{{ p.metric.v }}</span>
+                  <span style="font:500 11px 'IBM Plex Mono',monospace;color:#8b94a6;letter-spacing:.05em;text-transform:uppercase">{{ p.metric.l }}</span>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+        <!-- CAPABILITIES -->
+        <div style="padding:0 48px 80px">
+          <div style="font:500 13px 'IBM Plex Mono',monospace;color:#1e40af;letter-spacing:.14em;margin-bottom:12px">CAPABILITIES</div>
+          <h2 style="font:600 40px/1 'Space Grotesk',sans-serif;margin:0 0 40px;color:#0a0e14;letter-spacing:-.02em">Hooks we build.</h2>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+            <sc-for list="{{ capabilities }}" as="c" hint-placeholder-count="6">
+              <div style="border:1px solid rgba(10,14,20,.1);border-radius:14px;padding:26px">
+                <div style="font:600 18px 'Space Grotesk',sans-serif;color:#0a0e14;margin-bottom:8px">{{ c.name }}</div>
+                <div style="font:400 14px/1.55 'IBM Plex Sans',sans-serif;color:#5b6472">{{ c.desc }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+        <!-- SERVICES -->
+        <div style="padding:64px 48px;background:#f6f7f9;border-top:1px solid rgba(10,14,20,.08);border-bottom:1px solid rgba(10,14,20,.08)">
+          <div style="font:500 13px 'IBM Plex Mono',monospace;color:#1e40af;letter-spacing:.14em;margin-bottom:12px">SERVICES</div>
+          <h2 style="font:600 40px/1 'Space Grotesk',sans-serif;margin:0 0 40px;color:#0a0e14;letter-spacing:-.02em">Work with the studio.</h2>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+            <sc-for list="{{ services }}" as="s" hint-placeholder-count="2">
+              <div style="background:#fff;border:1px solid rgba(10,14,20,.1);border-radius:16px;padding:36px">
+                <div style="font:500 12px 'IBM Plex Mono',monospace;color:#1e40af;margin-bottom:16px">{{ s.k }}</div>
+                <h3 style="font:600 26px/1.15 'Space Grotesk',sans-serif;margin:0 0 14px;color:#0a0e14">{{ s.name }}</h3>
+                <p style="font:400 15.5px/1.6 'IBM Plex Sans',sans-serif;color:#5b6472;margin:0 0 22px">{{ s.desc }}</p>
+                <div style="display:flex;flex-direction:column;gap:10px">
+                  <sc-for list="{{ s.items }}" as="it" hint-placeholder-count="4">
+                    <div style="display:flex;align-items:center;gap:10px;font:500 14px 'IBM Plex Sans',sans-serif;color:#0a0e14"><span style="width:6px;height:6px;border-radius:50%;background:#1e40af"></span>{{ it }}</div>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+        <!-- PROCESS -->
+        <div style="padding:64px 48px">
+          <div style="font:500 13px 'IBM Plex Mono',monospace;color:#1e40af;letter-spacing:.14em;margin-bottom:12px">PROCESS</div>
+          <h2 style="font:600 40px/1 'Space Grotesk',sans-serif;margin:0 0 40px;color:#0a0e14;letter-spacing:-.02em">Spec to mainnet.</h2>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px">
+            <sc-for list="{{ process }}" as="s" hint-placeholder-count="4">
+              <div style="border-top:2px solid #1e40af;padding-top:18px">
+                <div style="font:500 12px 'IBM Plex Mono',monospace;color:#1e40af;margin-bottom:10px">{{ s.n }}</div>
+                <div style="font:600 20px 'Space Grotesk',sans-serif;color:#0a0e14;margin-bottom:8px">{{ s.title }}</div>
+                <div style="font:400 14px/1.55 'IBM Plex Sans',sans-serif;color:#5b6472">{{ s.desc }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+        <!-- STATS -->
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);padding:24px 48px 56px;gap:24px">
+          <sc-for list="{{ stats }}" as="st" hint-placeholder-count="4">
+            <div>
+              <div style="font:600 48px/1 'Space Grotesk',sans-serif;color:#0a0e14;letter-spacing:-.02em">{{ st.v }}</div>
+              <div style="font:500 12px 'IBM Plex Mono',monospace;color:#8b94a6;letter-spacing:.08em;margin-top:12px;text-transform:uppercase">{{ st.l }}</div>
+            </div>
+          </sc-for>
+        </div>
+
+        <!-- TECH STACK -->
+        <div style="padding:0 48px 64px">
+          <div style="font:500 13px 'IBM Plex Mono',monospace;color:#1e40af;letter-spacing:.14em;margin-bottom:20px">STACK</div>
+          <div style="display:flex;flex-wrap:wrap;gap:10px">
+            <sc-for list="{{ stack }}" as="t" hint-placeholder-count="10">
+              <span style="font:500 13px 'IBM Plex Mono',monospace;color:#0a0e14;padding:10px 15px;border:1px solid rgba(10,14,20,.12);border-radius:8px">{{ t }}</span>
+            </sc-for>
+          </div>
+        </div>
+
+        <!-- FAQ -->
+        <div style="padding:0 48px 72px">
+          <div style="font:500 13px 'IBM Plex Mono',monospace;color:#1e40af;letter-spacing:.14em;margin-bottom:12px">FAQ</div>
+          <h2 style="font:600 40px/1 'Space Grotesk',sans-serif;margin:0 0 36px;color:#0a0e14;letter-spacing:-.02em">Common questions.</h2>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+            <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="4">
+              <div style="border:1px solid rgba(10,14,20,.1);border-radius:14px;padding:26px">
+                <div style="font:600 17px/1.3 'Space Grotesk',sans-serif;color:#0a0e14;margin-bottom:10px">{{ f.q }}</div>
+                <div style="font:400 14px/1.55 'IBM Plex Sans',sans-serif;color:#5b6472">{{ f.a }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+        <!-- BRAND KIT -->
+        <div style="padding:64px 48px;background:#f6f7f9;border-top:1px solid rgba(10,14,20,.08)">
+          <div style="font:500 13px 'IBM Plex Mono',monospace;color:#1e40af;letter-spacing:.14em;margin-bottom:12px">BRAND KIT</div>
+          <h2 style="font:600 40px/1 'Space Grotesk',sans-serif;margin:0 0 40px;color:#0a0e14;letter-spacing:-.02em">The HookDev identity.</h2>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+            <div style="background:#fff;border:1px solid rgba(10,14,20,.1);border-radius:16px;padding:36px;display:flex;flex-direction:column;gap:24px">
+              <div style="font:500 11px 'IBM Plex Mono',monospace;color:#8b94a6;letter-spacing:.12em">LOGO LOCKUP</div>
+              <div style="display:flex;align-items:center;gap:13px"><div style="width:42px;height:42px;color:#0a0e14"><dc-import name="HookMascot" hint-size="42px,42px"></dc-import></div><span style="font:700 28px 'Space Grotesk',sans-serif;color:#0a0e14;letter-spacing:.02em">HOOK<span style="color:#1e40af">DEV</span></span></div>
+              <div style="height:1px;background:rgba(10,14,20,.08)"></div>
+              <div style="display:flex;align-items:center;gap:13px"><div style="width:34px;height:34px;color:#1e40af"><dc-import name="HookMascot" hint-size="34px,34px"></dc-import></div><span style="font:600 18px 'IBM Plex Mono',monospace;color:#5b6472;letter-spacing:.06em">hookdev.xyz</span></div>
+            </div>
+            <div style="background:#fff;border:1px solid rgba(10,14,20,.1);border-radius:16px;padding:36px">
+              <div style="font:500 11px 'IBM Plex Mono',monospace;color:#8b94a6;letter-spacing:.12em;margin-bottom:20px">PALETTE</div>
+              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+                <sc-for list="{{ palette }}" as="c" hint-placeholder-count="6">
+                  <div>
+                    <div style="height:54px;border-radius:10px;border:1px solid rgba(10,14,20,.1);background:{{ c.hex }}"></div>
+                    <div style="font:600 12px 'IBM Plex Sans',sans-serif;color:#0a0e14;margin-top:8px">{{ c.name }}</div>
+                    <div style="font:500 10.5px 'IBM Plex Mono',monospace;color:#8b94a6">{{ c.hex }}</div>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+            <div style="grid-column:1 / -1;background:#0a0e14;border-radius:16px;padding:40px;display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center">
+              <div>
+                <div style="font:500 11px 'IBM Plex Mono',monospace;color:#6b7688;letter-spacing:.12em;margin-bottom:18px">TYPOGRAPHY</div>
+                <div style="font:600 34px 'Space Grotesk',sans-serif;color:#fff;letter-spacing:-.01em">Space Grotesk</div>
+                <div style="font:500 12px 'IBM Plex Mono',monospace;color:#6b7688;margin:6px 0 20px">DISPLAY / HEADINGS</div>
+                <div style="font:400 19px 'IBM Plex Sans',sans-serif;color:#dfe4ec">IBM Plex Sans — body copy</div>
+                <div style="font:500 15px 'IBM Plex Mono',monospace;color:#8b94a6;margin-top:8px">IBM Plex Mono — data & labels</div>
+              </div>
+              <div>
+                <div style="font:500 11px 'IBM Plex Mono',monospace;color:#6b7688;letter-spacing:.12em;margin-bottom:14px">MARK USAGE</div>
+                <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+                  <div style="aspect-ratio:1;display:flex;align-items:center;justify-content:center;background:#141b2d;border:1px solid rgba(255,255,255,.1);border-radius:12px;color:#fff"><div style="width:46px;height:46px"><dc-import name="HookMascot" hint-size="46px,46px"></dc-import></div></div>
+                  <div style="aspect-ratio:1;display:flex;align-items:center;justify-content:center;background:#1e40af;border-radius:12px;color:#fff"><div style="width:46px;height:46px"><dc-import name="HookMascot" hint-size="46px,46px"></dc-import></div></div>
+                  <div style="aspect-ratio:1;display:flex;align-items:center;justify-content:center;background:#f6f7f9;border-radius:12px;color:#0a0e14"><div style="width:46px;height:46px"><dc-import name="HookMascot" hint-size="46px,46px"></dc-import></div></div>
+                </div>
+              </div>
+            </div>
+            <div style="grid-column:1 / -1;background:#fff;border:1px solid rgba(10,14,20,.1);border-radius:16px;padding:36px">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
+                <div style="font:500 11px 'IBM Plex Mono',monospace;color:#8b94a6;letter-spacing:.12em">SOCIAL</div>
+                <div style="font:500 12px 'IBM Plex Mono',monospace;color:#5b6472">@hookdev</div>
+              </div>
+              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:20px">
+                <div style="display:flex;align-items:center;gap:14px;background:#f6f7f9;border:1px solid rgba(10,14,20,.1);border-radius:12px;padding:18px">
+                  <div style="width:42px;height:42px;border-radius:11px;background:#0a0e14;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" width="18" height="18" fill="#fff"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.66l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25h6.83l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg></div>
+                  <div><div style="font:600 15px 'Space Grotesk',sans-serif;color:#0a0e14">X</div><div style="font:500 12px 'IBM Plex Mono',monospace;color:#8b94a6">@hookdev</div></div>
+                </div>
+                <div style="display:flex;align-items:center;gap:14px;background:#f6f7f9;border:1px solid rgba(10,14,20,.1);border-radius:12px;padding:18px">
+                  <div style="width:42px;height:42px;border-radius:11px;background:#0a0e14;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" width="20" height="20" fill="#fff"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg></div>
+                  <div><div style="font:600 15px 'Space Grotesk',sans-serif;color:#0a0e14">Facebook</div><div style="font:500 12px 'IBM Plex Mono',monospace;color:#8b94a6">/hookdev</div></div>
+                </div>
+                <div style="display:flex;align-items:center;gap:14px;background:#f6f7f9;border:1px solid rgba(10,14,20,.1);border-radius:12px;padding:18px">
+                  <div style="width:42px;height:42px;border-radius:11px;background:#0a0e14;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" width="21" height="21" fill="#fff"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg></div>
+                  <div><div style="font:600 15px 'Space Grotesk',sans-serif;color:#0a0e14">YouTube</div><div style="font:500 12px 'IBM Plex Mono',monospace;color:#8b94a6">@hookdev</div></div>
+                </div>
+              </div>
+              <div style="border:1px solid rgba(10,14,20,.1);border-radius:12px;overflow:hidden">
+                <div style="height:96px;background:radial-gradient(130% 180% at 12% 0%,rgba(30,64,175,.6),#0a0e14);display:flex;align-items:center;padding:0 26px">
+                  <span style="font:700 30px 'Space Grotesk',sans-serif;color:#fff;letter-spacing:.02em">HOOK<span style="color:#3b82f6">DEV</span></span>
+                  <span style="margin-left:auto;font:500 11px 'IBM Plex Mono',monospace;color:#8b94a6;letter-spacing:.16em">UNISWAP V4 HOOK STUDIO</span>
+                </div>
+                <div style="display:flex;align-items:flex-end;gap:14px;padding:0 26px 18px;margin-top:-28px;background:#0a0e14">
+                  <div style="width:64px;height:64px;border-radius:50%;background:#0a0e14;border:3px solid #141b2d;display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0"><div style="width:34px;height:34px"><dc-import name="HookMascot" hint-size="34px,34px"></dc-import></div></div>
+                  <div style="padding-bottom:2px"><div style="font:600 15px 'Space Grotesk',sans-serif;color:#fff">HookDev</div><div style="font:500 12px 'IBM Plex Mono',monospace;color:#8b94a6">@hookdev · hookdev.xyz</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div style="padding:80px 48px;text-align:center;background:#0a0e14">
+          <h2 style="font:600 52px/1.02 'Space Grotesk',sans-serif;margin:0 0 16px;color:#fff;letter-spacing:-.02em">Let's build your hook.</h2>
+          <p style="font:400 18px 'IBM Plex Sans',sans-serif;color:#8b94a6;margin:0 0 30px">From concept to mainnet. Tell us what your pool should do.</p>
+          <div style="display:inline-flex;gap:14px;align-items:center">
+            <span style="padding:16px 30px;background:#1e40af;color:#fff;border-radius:10px;font:600 16px 'IBM Plex Sans',sans-serif">Start a build →</span>
+            <span style="font:500 15px 'IBM Plex Mono',monospace;color:#3b82f6">build@hookdev.xyz</span>
+          </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:28px 48px;font:500 13px 'IBM Plex Sans',sans-serif;color:#8b94a6">
+          <div style="display:flex;align-items:center;gap:10px"><div style="width:20px;height:20px;color:#5b6472"><dc-import name="HookMascot" hint-size="20px,20px"></dc-import></div><span>HookDev © 2026</span></div>
+          <div style="display:flex;gap:26px"><span>Products</span><span>Services</span><span>Docs</span><span>X / @hookdev</span></div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+  <p class="dv-next">Try next: "converge on <a class="dv-oid" href="#1a">1a</a>" · "make <a class="dv-oid" href="#1b">1b</a> dark too" · "refine the hook logomark" · "add a case-studies section"</p>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      products: [
+        { idx: "01", name: "HookOS", cat: "FRAMEWORK", chain: "EVM", status: "LIVE", desc: "Modular runtime for building, simulating, and shipping Uniswap V4 hooks.", metric: { v: "120+", l: "Hooks scaffolded" }, feats: ["CLI + SDK", "Fork simulation", "Hook templates"] },
+        { idx: "02", name: "HookWallet", cat: "WALLET", chain: "Base · Arbitrum", status: "LIVE", desc: "Account-abstraction wallet purpose-built for hook-powered DeFi.", metric: { v: "4337", l: "Smart accounts" }, feats: ["Passkeys", "Batched swaps", "Gas sponsorship"] },
+        { idx: "03", name: "OV2", cat: "ORACLE", chain: "Cross-chain", status: "BETA", desc: "Manipulation-resistant, low-latency price oracle feeding hooks on-chain.", metric: { v: "<1 blk", l: "Update latency" }, feats: ["TWAP + spot", "Manipulation guard", "Push + pull"] },
+        { idx: "04", name: "HookRPC", cat: "INFRA", chain: "Multi-chain", status: "LIVE", desc: "High-availability RPC and indexing tuned for hook-heavy workloads.", metric: { v: "99.98%", l: "Uptime" }, feats: ["Archive nodes", "Hook indexing", "WebSocket"] },
+        { idx: "05", name: "HookSwap", cat: "DEX", chain: "Unichain", status: "BETA", desc: "A DEX where every pool is programmable through hooks.", metric: { v: "$40M+", l: "Routed volume" }, feats: ["Hook pools", "MEV-aware", "Limit orders"] },
+      ],
+      capabilities: [
+        { name: "Dynamic Fees", desc: "Fees that respond to volatility, volume, or time of day." },
+        { name: "LVR / MEV Mitigation", desc: "Capture or neutralize loss-versus-rebalancing at the pool." },
+        { name: "On-chain Limit Orders", desc: "Resting orders executed directly inside the pool." },
+        { name: "TWAMM", desc: "Time-weighted market makers for large orders, split over time." },
+        { name: "Custom Oracles", desc: "Pool-native price feeds with manipulation guards." },
+        { name: "Gated & KYC Pools", desc: "Permissioned liquidity with on-chain compliance rules." },
+      ],
+      services: [
+        { k: "S-01", name: "Uniswap V4 Hook Development", desc: "Custom hooks engineered end-to-end — from spec to audit-ready mainnet deployment.", items: ["Dynamic fees", "LVR / MEV mitigation", "On-chain limit orders", "Gated & KYC pools"] },
+        { k: "S-02", name: "Web3 Developer Services", desc: "Full-stack protocol engineering, from smart contracts to production infrastructure.", items: ["Smart contracts", "Audit prep", "Protocol infra", "dApp frontends"] },
+      ],
+      process: [
+        { n: "01", title: "Scope", desc: "We map your pool logic, constraints, and threat model into a clear spec." },
+        { n: "02", title: "Build", desc: "Hooks written in Solidity, tested with Foundry, simulated against forks." },
+        { n: "03", title: "Harden", desc: "Invariant tests, gas profiling, and audit-ready documentation." },
+        { n: "04", title: "Ship", desc: "Mainnet deployment, monitoring, and post-launch support." },
+      ],
+      stats: [
+        { v: "5", l: "Products shipped" },
+        { v: "12+", l: "V4 hooks deployed" },
+        { v: "99.98%", l: "RPC uptime" },
+        { v: "$40M+", l: "Volume routed" },
+      ],
+      stack: ["Solidity", "Foundry", "Uniswap V4", "EIP-4337", "Viem", "TypeScript", "The Graph", "Base", "Arbitrum", "Unichain"],
+      faqs: [
+        { q: "What is a Uniswap V4 hook?", a: "A contract that runs custom logic at key points in a pool's lifecycle — before and after swaps, liquidity changes, and initialization — letting you reshape how a market behaves." },
+        { q: "Do you audit the hooks you build?", a: "We deliver audit-ready code with full test coverage and coordinate third-party audits; we don't self-certify security." },
+        { q: "Which chains do you deploy to?", a: "Any EVM chain running Uniswap V4 — including Base, Arbitrum, and Unichain." },
+        { q: "Can we license the products standalone?", a: "Yes. HookOS, OV2, and HookRPC are available on their own or bundled with a build engagement." },
+      ],
+      palette: [
+        { name: "Ink", hex: "#0A0E14" },
+        { name: "Slate", hex: "#141B2D" },
+        { name: "Signal", hex: "#1E40AF" },
+        { name: "Beam", hex: "#3B82F6" },
+        { name: "Fog", hex: "#8B94A6" },
+        { name: "Paper", hex: "#F6F7F9" },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

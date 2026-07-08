@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#e6e8ec;font-family:'IBM Plex Sans',system-ui,sans-serif}
+a{color:#1e40af;text-decoration:none}
+a:hover{color:#3b82f6}
+</style>
+</helmet>
+<div style="padding:56px;display:inline-flex;flex-direction:column;gap:52px;min-width:100%">
+
+  <div>
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
+      <div style="width:34px;height:34px;color:#0a0e14"><dc-import name="HookMascot" hint-size="34px,34px"></dc-import></div>
+      <span style="font:700 22px 'Space Grotesk',sans-serif;color:#0a0e14;letter-spacing:.02em">HOOK<span style="color:#1e40af">DEV</span></span>
+      <span style="font:500 12px 'IBM Plex Mono',monospace;color:rgba(10,14,20,.5);letter-spacing:.1em;margin-left:6px">SOCIAL ASSETS</span>
+    </div>
+    <div style="font:400 14px/1.5 'IBM Plex Sans',sans-serif;color:rgba(10,14,20,.55);max-width:640px">Export-ready artboards at exact platform pixel dimensions. Each board is 1:1 — screenshot or export it directly. Colors: Ink #0A0E14 · Signal #1E40AF · Beam #3B82F6.</div>
+  </div>
+
+  <!-- AVATARS -->
+  <div>
+    <div style="font:600 12px 'IBM Plex Mono',monospace;color:#0a0e14;letter-spacing:.12em;margin-bottom:4px">PROFILE AVATAR</div>
+    <div style="font:400 12.5px 'IBM Plex Sans',sans-serif;color:rgba(10,14,20,.5);margin-bottom:18px">Square master · export at 400 / 512 / 800px · safe inside a circle crop (X, YouTube, Facebook, LinkedIn, Discord, Telegram)</div>
+    <div style="display:flex;gap:24px;align-items:flex-start">
+      <div>
+        <div style="width:400px;height:400px;background:#0a0e14;background-image:radial-gradient(90% 90% at 30% 20%,rgba(30,64,175,.55),transparent 60%);display:flex;align-items:center;justify-content:center;color:#fff"><div style="width:210px;height:210px"><dc-import name="HookMascot" hint-size="210px,210px"></dc-import></div></div>
+        <div style="font:500 11px 'IBM Plex Mono',monospace;color:rgba(10,14,20,.5);margin-top:8px">INK · 400×400</div>
+      </div>
+      <div>
+        <div style="width:400px;height:400px;background:#1e40af;background-image:radial-gradient(90% 90% at 30% 20%,rgba(255,255,255,.14),transparent 60%);display:flex;align-items:center;justify-content:center;color:#fff"><div style="width:210px;height:210px"><dc-import name="HookMascot" hint-size="210px,210px"></dc-import></div></div>
+        <div style="font:500 11px 'IBM Plex Mono',monospace;color:rgba(10,14,20,.5);margin-top:8px">SIGNAL · 400×400</div>
+      </div>
+      <div>
+        <div style="width:400px;height:400px;border-radius:50%;background:#0a0e14;background-image:radial-gradient(90% 90% at 30% 20%,rgba(30,64,175,.55),transparent 60%);display:flex;align-items:center;justify-content:center;color:#fff;overflow:hidden"><div style="width:210px;height:210px"><dc-import name="HookMascot" hint-size="210px,210px"></dc-import></div></div>
+        <div style="font:500 11px 'IBM Plex Mono',monospace;color:rgba(10,14,20,.5);margin-top:8px">CIRCLE CROP PREVIEW</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- X HEADER -->
+  <div>
+    <div style="font:600 12px 'IBM Plex Mono',monospace;color:#0a0e14;letter-spacing:.12em;margin-bottom:4px">X / TWITTER — HEADER</div>
+    <div style="font:400 12.5px 'IBM Plex Sans',sans-serif;color:rgba(10,14,20,.5);margin-bottom:18px">1500 × 500px</div>
+    <div style="width:1500px;height:500px;background:#0a0e14;background-image:radial-gradient(70% 130% at 10% -15%,rgba(30,64,175,.6),transparent 55%),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:auto,72px 72px;position:relative;overflow:hidden;display:flex;align-items:center;padding:0 96px">
+      <div style="position:absolute;top:0;left:0;right:0;height:5px;background:#1e40af"></div>
+      <div style="opacity:.06;position:absolute;right:-30px;top:50%;transform:translateY(-50%);width:440px;height:440px;color:#fff"><dc-import name="HookMascot" hint-size="440px,440px"></dc-import></div>
+      <div style="position:relative;z-index:1">
+        <div style="display:flex;align-items:center;gap:26px;margin-bottom:24px">
+          <div style="width:92px;height:92px;color:#fff"><dc-import name="HookMascot" hint-size="92px,92px"></dc-import></div>
+          <span style="font:700 74px 'Space Grotesk',sans-serif;color:#fff;letter-spacing:.01em">HOOK<span style="color:#3b82f6">DEV</span></span>
+        </div>
+        <div style="font:500 21px 'IBM Plex Mono',monospace;color:#8b94a6;letter-spacing:.3em">UNISWAP V4 HOOK STUDIO</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- YOUTUBE -->
+  <div>
+    <div style="font:600 12px 'IBM Plex Mono',monospace;color:#0a0e14;letter-spacing:.12em;margin-bottom:4px">YOUTUBE — CHANNEL ART</div>
+    <div style="font:400 12.5px 'IBM Plex Sans',sans-serif;color:rgba(10,14,20,.5);margin-bottom:18px">2560 × 1440px · keep content inside the 1546 × 423 safe area</div>
+    <div style="width:2560px;height:1440px;background:#0a0e14;background-image:radial-gradient(60% 120% at 50% -20%,rgba(30,64,175,.6),transparent 55%),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:auto,80px 80px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center">
+      <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:1546px;height:423px;border:2px dashed rgba(255,255,255,.16);border-radius:10px"></div>
+      <div style="position:relative;display:flex;flex-direction:column;align-items:center;gap:34px">
+        <div style="display:flex;align-items:center;gap:38px">
+          <div style="width:156px;height:156px;color:#fff"><dc-import name="HookMascot" hint-size="156px,156px"></dc-import></div>
+          <span style="font:700 120px 'Space Grotesk',sans-serif;color:#fff;letter-spacing:.01em">HOOK<span style="color:#3b82f6">DEV</span></span>
+        </div>
+        <div style="font:500 30px 'IBM Plex Mono',monospace;color:#8b94a6;letter-spacing:.36em">UNISWAP V4 HOOK STUDIO</div>
+      </div>
+      <div style="position:absolute;left:50%;top:calc(50% - 235px);transform:translateX(-50%);font:500 15px 'IBM Plex Mono',monospace;color:rgba(255,255,255,.35);letter-spacing:.14em">SAFE AREA · 1546 × 423</div>
+    </div>
+  </div>
+
+  <!-- FACEBOOK -->
+  <div>
+    <div style="font:600 12px 'IBM Plex Mono',monospace;color:#0a0e14;letter-spacing:.12em;margin-bottom:4px">FACEBOOK — COVER</div>
+    <div style="font:400 12.5px 'IBM Plex Sans',sans-serif;color:rgba(10,14,20,.5);margin-bottom:18px">820 × 312px</div>
+    <div style="width:820px;height:312px;background:#0a0e14;background-image:radial-gradient(80% 140% at 12% -20%,rgba(30,64,175,.6),transparent 55%),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:auto,60px 60px;position:relative;overflow:hidden;display:flex;align-items:center;padding:0 60px">
+      <div style="position:absolute;top:0;left:0;right:0;height:4px;background:#1e40af"></div>
+      <div style="opacity:.06;position:absolute;right:-20px;top:50%;transform:translateY(-50%);width:280px;height:280px;color:#fff"><dc-import name="HookMascot" hint-size="280px,280px"></dc-import></div>
+      <div style="position:relative;z-index:1">
+        <div style="display:flex;align-items:center;gap:18px;margin-bottom:16px">
+          <div style="width:60px;height:60px;color:#fff"><dc-import name="HookMascot" hint-size="60px,60px"></dc-import></div>
+          <span style="font:700 48px 'Space Grotesk',sans-serif;color:#fff;letter-spacing:.01em">HOOK<span style="color:#3b82f6">DEV</span></span>
+        </div>
+        <div style="font:500 15px 'IBM Plex Mono',monospace;color:#8b94a6;letter-spacing:.24em">UNISWAP V4 HOOK STUDIO</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LINKEDIN -->
+  <div>
+    <div style="font:600 12px 'IBM Plex Mono',monospace;color:#0a0e14;letter-spacing:.12em;margin-bottom:4px">LINKEDIN — COVER</div>
+    <div style="font:400 12.5px 'IBM Plex Sans',sans-serif;color:rgba(10,14,20,.5);margin-bottom:18px">1128 × 191px</div>
+    <div style="width:1128px;height:191px;background:#0a0e14;background-image:radial-gradient(60% 180% at 8% -20%,rgba(30,64,175,.6),transparent 55%),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:auto,64px 64px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:space-between;padding:0 60px">
+      <div style="position:absolute;top:0;left:0;right:0;height:4px;background:#1e40af"></div>
+      <div style="display:flex;align-items:center;gap:20px">
+        <div style="width:60px;height:60px;color:#fff"><dc-import name="HookMascot" hint-size="60px,60px"></dc-import></div>
+        <span style="font:700 46px 'Space Grotesk',sans-serif;color:#fff;letter-spacing:.01em">HOOK<span style="color:#3b82f6">DEV</span></span>
+      </div>
+      <div style="font:500 15px 'IBM Plex Mono',monospace;color:#8b94a6;letter-spacing:.2em;text-align:right">UNISWAP V4 HOOK STUDIO<br><span style="color:#3b82f6;letter-spacing:.08em">hookdev.xyz</span></div>
+    </div>
+  </div>
+
+  <!-- HANDLES -->
+  <div>
+    <div style="font:600 12px 'IBM Plex Mono',monospace;color:#0a0e14;letter-spacing:.12em;margin-bottom:4px">HANDLES</div>
+    <div style="font:400 12.5px 'IBM Plex Sans',sans-serif;color:rgba(10,14,20,.5);margin-bottom:18px">Consistent handle across every platform</div>
+    <div style="display:grid;grid-template-columns:repeat(3,minmax(280px,1fr));gap:14px;max-width:920px">
+      <div style="display:flex;align-items:center;gap:14px;background:#0a0e14;border-radius:12px;padding:16px 18px">
+        <div style="width:40px;height:40px;border-radius:10px;background:#141b2d;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" width="17" height="17" fill="#fff"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.66l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25h6.83l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg></div>
+        <div><div style="font:600 15px 'Space Grotesk',sans-serif;color:#fff">X</div><div style="font:500 12px 'IBM Plex Mono',monospace;color:#8b94a6">@hookdev</div></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:14px;background:#0a0e14;border-radius:12px;padding:16px 18px">
+        <div style="width:40px;height:40px;border-radius:10px;background:#141b2d;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" width="20" height="20" fill="#fff"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg></div>
+        <div><div style="font:600 15px 'Space Grotesk',sans-serif;color:#fff">YouTube</div><div style="font:500 12px 'IBM Plex Mono',monospace;color:#8b94a6">@hookdev</div></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:14px;background:#0a0e14;border-radius:12px;padding:16px 18px">
+        <div style="width:40px;height:40px;border-radius:10px;background:#141b2d;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" width="19" height="19" fill="#fff"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg></div>
+        <div><div style="font:600 15px 'Space Grotesk',sans-serif;color:#fff">Facebook</div><div style="font:500 12px 'IBM Plex Mono',monospace;color:#8b94a6">/hookdev</div></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:14px;background:#0a0e14;border-radius:12px;padding:16px 18px">
+        <div style="width:40px;height:40px;border-radius:10px;background:#141b2d;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" width="19" height="19" fill="#fff"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg></div>
+        <div><div style="font:600 15px 'Space Grotesk',sans-serif;color:#fff">LinkedIn</div><div style="font:500 12px 'IBM Plex Mono',monospace;color:#8b94a6">/company/hookdev</div></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:14px;background:#0a0e14;border-radius:12px;padding:16px 18px">
+        <div style="width:40px;height:40px;border-radius:10px;background:#141b2d;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" width="20" height="20" fill="#fff"><path d="M20.317 4.369A19.79 19.79 0 0 0 15.885 3c-.21.375-.44.88-.6 1.28a18.27 18.27 0 0 0-5.487 0A12.6 12.6 0 0 0 9.2 3 19.7 19.7 0 0 0 4.77 4.37C1.6 9.06.74 13.64 1.17 18.15a19.9 19.9 0 0 0 6.04 3.03c.49-.67.92-1.38 1.29-2.13-.71-.27-1.39-.6-2.03-.99.17-.12.34-.25.5-.38 3.9 1.82 8.12 1.82 11.98 0 .16.13.33.26.5.38-.64.39-1.32.72-2.03.99.37.75.8 1.46 1.29 2.13a19.9 19.9 0 0 0 6.04-3.03c.5-5.25-.85-9.79-3.57-13.78zM8.02 15.33c-1.18 0-2.15-1.09-2.15-2.42s.95-2.42 2.15-2.42 2.17 1.1 2.15 2.42c0 1.33-.95 2.42-2.15 2.42zm7.96 0c-1.18 0-2.15-1.09-2.15-2.42s.95-2.42 2.15-2.42 2.17 1.1 2.15 2.42c0 1.33-.94 2.42-2.15 2.42z"></path></svg></div>
+        <div><div style="font:600 15px 'Space Grotesk',sans-serif;color:#fff">Discord</div><div style="font:500 12px 'IBM Plex Mono',monospace;color:#8b94a6">/hookdev</div></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:14px;background:#0a0e14;border-radius:12px;padding:16px 18px">
+        <div style="width:40px;height:40px;border-radius:10px;background:#141b2d;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" width="20" height="20" fill="#fff"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.56 8.16l-1.86 8.78c-.14.62-.51.77-1.03.48l-2.85-2.1-1.37 1.32c-.15.15-.28.28-.57.28l.2-2.9 5.28-4.77c.23-.2-.05-.32-.36-.12L8.24 13.5l-2.82-.88c-.61-.19-.62-.61.13-.9l11.02-4.25c.51-.19.96.12.79.9z"></path></svg></div>
+        <div><div style="font:600 15px 'Space Grotesk',sans-serif;color:#fff">Telegram</div><div style="font:500 12px 'IBM Plex Mono',monospace;color:#8b94a6">@hookdev</div></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>
