@@ -1,34 +1,61 @@
 ---
-// Hero — builder identity. "We are building web3."
+// Hero — builder identity ("We are building web3.") beside a live system board.
+import { products, stats, social } from '../data/site';
+
+const betaDot = 'background:#3B82F6;box-shadow:0 0 0 3px rgba(59,130,246,.16)';
 ---
 <section class="hero shell" aria-labelledby="hero-h1">
-  <div class="eyebrow-row rise">
-    <span class="eyebrow"><span class="live-dot"></span> Shipping onchain</span>
-    <span class="eyebrow">0x · Uniswap V4 · AA</span>
-  </div>
+  <div class="hero-grid">
+    <div>
+      <div class="eyebrow-row rise">
+        <span class="eyebrow"><span class="live-dot"></span> Shipping onchain</span>
+        <span class="eyebrow">0x · Uniswap V4 · AA</span>
+      </div>
 
-  <h1 id="hero-h1" class="rise rise-2">
-    We are building <span class="accent">web3.</span>
-  </h1>
+      <h1 id="hero-h1" class="rise rise-2">
+        We are building <span class="accent">web3.</span>
+      </h1>
 
-  <p class="hero-lead rise rise-3">
-    HookDev is a Web3 studio forging the products that power onchain markets —
-    Uniswap V4 hooks, account abstraction, oracles, and infra. Five shipped, more on the anvil.
-  </p>
+      <p class="hero-lead rise rise-3">
+        HookDev is a Web3 studio building the products that power onchain markets —
+        Uniswap V4 hooks, account abstraction, token launches, and infra. Five shipped, more in the pipeline.
+      </p>
 
-  <div class="hero-actions rise rise-3">
-    <a class="btn btn-primary" href="#products">
-      See what we build <span class="arw" aria-hidden="true">↓</span>
-    </a>
-    <a class="btn btn-ghost" href="https://x.com/hookdev" target="_blank" rel="noopener">
-      Follow the build <span class="arw" aria-hidden="true">→</span>
-    </a>
-  </div>
+      <div class="hero-actions rise rise-3">
+        <a class="btn btn-primary" href="#products">
+          See what we build <span class="arw" aria-hidden="true">↓</span>
+        </a>
+        <a class="btn btn-ghost" href={social.xUrl} target="_blank" rel="noopener">
+          Follow the build <span class="arw" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
 
-  <div class="hero-facts rise rise-3">
-    <span><b>5</b>Products shipped</span>
-    <span><b>12+</b>V4 hooks on mainnet</span>
-    <span><b>$40M+</b>Volume routed</span>
-    <span><b>99.98%</b>RPC uptime</span>
+    <div class="board rise rise-3">
+      <div class="board-head">
+        <span>System status</span>
+        <span class="ok"><span class="live-dot"></span> All systems live</span>
+      </div>
+
+      {products.map((p) => (
+        <div class="board-row">
+          <span class="nm">
+            <span class="live-dot" style={p.status === 'BETA' ? betaDot : undefined}></span>
+            {p.name}
+          </span>
+          <span class="tag">{p.cat}</span>
+          <span class={`st${p.status === 'BETA' ? ' beta' : ''}`}>{p.status}</span>
+        </div>
+      ))}
+
+      <div class="board-metrics">
+        {stats.map((s) => (
+          <div>
+            <b>{s.v}</b>
+            <span>{s.l}</span>
+          </div>
+        ))}
+      </div>
+    </div>
   </div>
 </section>

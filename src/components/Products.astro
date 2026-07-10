@@ -1,36 +1,63 @@
 ---
+// Products — terminal data table. One panel, one row per product,
+// column header strip like a trading blotter. Collapses to stacked
+// cards under 860px (see .ptable rules in global.css).
 import { products, domain } from '../data/site';
 ---
 <section class="band" id="products" aria-labelledby="products-h">
   <div class="shell">
     <div class="section-head">
-      <div class="point"><span class="eyebrow"><span class="idx">THE FORGE</span>&nbsp;&nbsp;05 products, live onchain</span></div>
-      <h2 id="products-h">Everything we've built.</h2>
-      <p class="sub">A full stack for hook-powered DeFi — framework, wallet, oracle, infra, and DEX. Each one shipping in production.</p>
+      <div class="point">
+        <span class="eyebrow"><span class="idx">PORTFOLIO</span>&nbsp;&nbsp;05 products · live onchain</span>
+      </div>
+      <h2 id="products-h">The stack we ship.</h2>
+      <p class="sub">
+        Framework, wallet, launchpad, infra, and DEX — five products covering the full lifecycle of a
+        token, from launch to hook-powered pool. Every one of them is running in production today.
+      </p>
     </div>
 
-    <div class="pgrid">
+    <div class="ptable">
+      <div class="ptable-head" aria-hidden="true">
+        <span>#</span>
+        <span>Product</span>
+        <span>Class</span>
+        <span>Chain</span>
+        <span>Status</span>
+        <span class="num">Metric</span>
+        <span></span>
+      </div>
+
       {products.map((p) => (
-        <a class="pcard" href={p.url} target="_blank" rel="noopener" style={`--acc:${p.accent}`}>
-          <div class="pcard-top">
-            <span class="pnum">{p.idx}</span>
-            <span class={`st${p.status === 'LIVE' ? ' live' : ''}`}>{p.status}</span>
-          </div>
+        <a class="prow" href={p.url} target="_blank" rel="noopener" style={`--acc:${p.accent}`}>
+          <span class="pnum">{p.idx}</span>
 
-          <div class="pcard-body">
+          <div class="pmain">
             <h3 class="pname">{p.name}</h3>
-            <div class="pmeta">{p.cat} · {p.chain}</div>
             <p class="pdesc">{p.desc}</p>
+            <div class="pfeats">
+              {p.feats.map((f) => <span>{f}</span>)}
+            </div>
           </div>
 
-          <div class="pfeats">
-            {p.feats.map((f) => <span>{f}</span>)}
-          </div>
+          <span class="pcat"><span class="lbl">Class</span>{p.cat}</span>
+          <span class="pchain"><span class="lbl">Chain</span>{p.chain}</span>
 
-          <div class="pcard-foot">
-            <span class="pmetric"><b>{p.metric.v}</b> {p.metric.l}</span>
-            <span class="plink">{domain(p.url)} <span class="arw" aria-hidden="true">↗</span></span>
-          </div>
+          <span class="pstat">
+            <span class={`st${p.status === 'LIVE' ? ' live' : ' beta'}`}>
+              <span class="dot"></span>{p.status}
+            </span>
+          </span>
+
+          <span class="pmetric">
+            <b>{p.metric.v}</b>
+            <span class="lbl">{p.metric.l}</span>
+          </span>
+
+          <span class="pgo">
+            <span class="dom">{domain(p.url)}</span>
+            <span class="arw" aria-hidden="true">↗</span>
+          </span>
         </a>
       ))}
     </div>

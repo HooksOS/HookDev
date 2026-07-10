@@ -1,16 +1,17 @@
 ---
 // Closing statement — builder ethos, no booking.
+import { social } from '../data/site';
 ---
 <section class="band cta" aria-labelledby="cta-h">
   <div class="shell">
-    <div class="point-c">still forging</div>
+    <div class="point-c">still building</div>
     <h2 id="cta-h">We ship onchain, in public.</h2>
     <p>Every product lives in production. Follow along as we build the next layer of web3.</p>
     <div class="cta-row">
-      <a class="btn btn-primary" href="https://x.com/hookdev" target="_blank" rel="noopener">
-        Follow @hookdev <span class="arw" aria-hidden="true">→</span>
+      <a class="btn btn-primary" href={social.xUrl} target="_blank" rel="noopener">
+        Follow {social.xHandle} <span class="arw" aria-hidden="true">→</span>
       </a>
-      <a class="cta-email" href="mailto:build@hookdev.xyz">build@hookdev.xyz</a>
+      <a class="cta-email" href={`mailto:${social.email}`}>{social.email}</a>
     </div>
   </div>
 </section>

@@ -49,11 +49,11 @@ export interface Faq {
 }
 
 export const products: Product[] = [
-  { idx: "01", name: "HookOS", cat: "FRAMEWORK", chain: "EVM", status: "LIVE", icon: "ic-os", accent: "#4ADE80", logo: "hookos.svg", url: "https://hookos.fun/", desc: "Modular runtime for building, simulating, and shipping Uniswap V4 hooks.", metric: { v: "120+", l: "Hooks scaffolded" }, feats: ["CLI + SDK", "Fork simulation", "Hook templates"] },
-  { idx: "02", name: "HookOS Wallet", cat: "WALLET", chain: "Base · Arbitrum", status: "LIVE", icon: "ic-wallet", accent: "#22C55E", logo: "hookoswallet.svg", url: "https://hookoswallet.xyz/", desc: "Account-abstraction wallet purpose-built for hook-powered DeFi.", metric: { v: "4337", l: "Smart accounts" }, feats: ["Passkeys", "Batched swaps", "Gas sponsorship"] },
-  { idx: "03", name: "OV2", cat: "ORACLE", chain: "Cross-chain", status: "BETA", icon: "ic-oracle", accent: "#A855F7", logo: null, url: "https://ov2.fun/", desc: "Manipulation-resistant, low-latency price oracle feeding hooks on-chain.", metric: { v: "<1 blk", l: "Update latency" }, feats: ["TWAP + spot", "Manipulation guard", "Push + pull"] },
+  { idx: "01", name: "HookOS", cat: "FRAMEWORK", chain: "EVM", status: "LIVE", icon: "ic-os", accent: "#3B82F6", logo: "hookos.svg", url: "https://hookos.fun/", desc: "Modular runtime for building, simulating, and shipping Uniswap V4 hooks.", metric: { v: "120+", l: "Hooks scaffolded" }, feats: ["CLI + SDK", "Fork simulation", "Hook templates"] },
+  { idx: "02", name: "HookOS Wallet", cat: "WALLET", chain: "Base · Arbitrum", status: "LIVE", icon: "ic-wallet", accent: "#60A5FA", logo: "hookoswallet.svg", url: "https://hookoswallet.xyz/", desc: "Account-abstraction wallet purpose-built for hook-powered DeFi.", metric: { v: "4337", l: "Smart accounts" }, feats: ["Passkeys", "Batched swaps", "Gas sponsorship"] },
+  { idx: "03", name: "OV3", cat: "LAUNCHPAD", chain: "Cross-chain", status: "BETA", icon: "ic-launchpad", accent: "#818CF8", logo: null, url: "https://ov3.fun/", desc: "Memecoin token launchpad — fair launches with liquidity and trading live from block one.", metric: { v: "BETA", l: "Now launching" }, feats: ["Fair launch", "Instant liquidity", "Bonding curve"] },
   { idx: "04", name: "HookRPC", cat: "INFRA", chain: "Multi-chain", status: "LIVE", icon: "ic-rpc", accent: "#38BDF8", logo: null, url: "https://hookrpc.xyz/", desc: "High-availability RPC and indexing tuned for hook-heavy workloads.", metric: { v: "99.98%", l: "Uptime" }, feats: ["Archive nodes", "Hook indexing", "WebSocket"] },
-  { idx: "05", name: "HookSwap", cat: "DEX", chain: "Unichain", status: "BETA", icon: "ic-swap", accent: "#2FE07E", logo: "hookswap.png", url: "https://hookswap.org/", desc: "A DEX where every pool is programmable through hooks.", metric: { v: "$40M+", l: "Routed volume" }, feats: ["Hook pools", "MEV-aware", "Limit orders"] },
+  { idx: "05", name: "HookSwap", cat: "DEX", chain: "Unichain", status: "BETA", icon: "ic-swap", accent: "#22C55E", logo: "hookswap.png", url: "https://hookswap.org/", desc: "A DEX where every pool is programmable through hooks.", metric: { v: "$40M+", l: "Routed volume" }, feats: ["Hook pools", "MEV-aware", "Limit orders"] },
 ];
 
 export const capabilities: Capability[] = [
@@ -92,7 +92,7 @@ export const faqs: Faq[] = [
   { q: "What is a Uniswap V4 hook?", a: "A contract that runs custom logic at key points in a pool's lifecycle — before and after swaps, liquidity changes, and initialization — letting you reshape how a market behaves." },
   { q: "Do you audit the hooks you build?", a: "We deliver audit-ready code with full test coverage and coordinate third-party audits; we don't self-certify security." },
   { q: "Which chains do you deploy to?", a: "Any EVM chain running Uniswap V4 — including Base, Arbitrum, and Unichain." },
-  { q: "Can we license the products standalone?", a: "Yes. HookOS, OV2, and HookRPC are available on their own or bundled with a build engagement." },
+  { q: "Can we license the products standalone?", a: "Yes. HookOS, OV3, and HookRPC are available on their own or bundled with a build engagement." },
 ];
 
 // hero signature: the real Uniswap V4 hook lifecycle callbacks.
@@ -104,6 +104,12 @@ export const lifecycle: { name: string; on: boolean }[] = [
   { name: "afterSwap", on: true },
   { name: "afterDonate", on: false },
 ];
+
+export const social = {
+  xHandle: "@Ox_Forged",
+  xUrl: "https://x.com/Ox_Forged",
+  email: "build@hookdev.xyz",
+};
 
 // helper shared by the product card component
 export const domain = (u: string): string => u.replace(/^https?:\/\//, "").replace(/\/$/, "");

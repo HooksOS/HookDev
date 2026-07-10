@@ -1,5 +1,6 @@
 ---
 // Minimal sticky nav — showcase only, no booking.
+import { social } from '../data/site';
 ---
 <nav class="nav" aria-label="Primary">
   <div class="nav-in">
@@ -9,7 +10,7 @@
     </a>
     <div class="nav-links">
       <a href="#products">Products</a>
-      <a href="https://x.com/hookdev" target="_blank" rel="noopener">@hookdev ↗</a>
+      <a href={social.xUrl} target="_blank" rel="noopener">{social.xHandle} ↗</a>
     </div>
   </div>
 </nav>

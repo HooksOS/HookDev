@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import HookSymbols from '../components/HookSymbols.astro';
+import Ticker from '../components/Ticker.astro';
 import Nav from '../components/Nav.astro';
 import Hero from '../components/Hero.astro';
 import Products from '../components/Products.astro';
@@ -11,7 +12,8 @@ import Footer from '../components/Footer.astro';
   <a class="skip" href="#products">Skip to content</a>
 
   <HookSymbols />
-  <div class="forge-bg" aria-hidden="true"></div>
+  <div class="grid-bg" aria-hidden="true"></div>
+  <Ticker />
   <Nav />
 
   <main id="top">

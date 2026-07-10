@@ -1,0 +1,31 @@
+---
+// Terminal ticker bar — product status + headline metrics, marquee-scrolled.
+// The track renders twice so the -50% translate loops seamlessly.
+import { products } from '../data/site';
+
+const items = products.map((p) => ({
+  sym: p.name.toUpperCase().replace(/\s+/g, ''),
+  status: p.status,
+  metric: `${p.metric.v} ${p.metric.l.toUpperCase()}`,
+}));
+---
+<div class="ticker" aria-label="Product status ticker">
+  <div class="ticker-track">
+    {[0, 1].map((pass) => (
+      <div class="ticker-track-half" aria-hidden={pass === 1 ? 'true' : undefined}>
+        {items.map((it) => (
+          <span class="ticker-item">
+            <span class={`dot${it.status === 'BETA' ? ' beta' : ''}`}></span>
+            <span class="sym">{it.sym}</span>
+            <span>{it.status}</span>
+            <span class="val">{it.metric}</span>
+          </span>
+        ))}
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .ticker-track-half { display: flex; }
+</style>

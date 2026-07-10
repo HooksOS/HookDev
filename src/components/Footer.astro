@@ -1,16 +1,17 @@
 ---
 // Site footer.
+import { social } from '../data/site';
 ---
 <footer class="footer">
   <div class="footer-in">
     <div class="brand-mini">
       <svg aria-hidden="true"><use href="#hookmark" /></svg>
-      <span>HookDev © 2026 · Forging web3</span>
+      <span>HookDev © 2026 · Building web3</span>
     </div>
     <div class="footer-links">
       <a href="#products">Products</a>
-      <a href="https://x.com/hookdev" target="_blank" rel="noopener">X / @hookdev</a>
-      <a href="mailto:build@hookdev.xyz">build@hookdev.xyz</a>
+      <a href={social.xUrl} target="_blank" rel="noopener">X / {social.xHandle}</a>
+      <a href={`mailto:${social.email}`}>{social.email}</a>
     </div>
   </div>
 </footer>
